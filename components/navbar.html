@@ -1,18 +1,18 @@
 <template>
-  <nav class="navbar bg-white border-top fixed-bottom">
+  <nav class="navbar bg-white border-top fixed-bottom" id="navbar">
     <div class="container-fluid d-flex justify-content-around text-center">
 
-      <a href="index.html" class="nav-link text-primary d-flex flex-column align-items-center">
+      <a data-route="/" class="nav-link text-primary d-flex flex-column align-items-center">
         <i class="bi bi-house-fill fs-4"></i>
         <small>Início</small>
       </a>
-      <!-- substituir por rota -->
-      <a href="cardapio.html" class="nav-link text-secondary d-flex flex-column align-items-center">
+
+      <a data-route="/cardapio" class="nav-link text-secondary d-flex flex-column align-items-center">
         <i class="bi bi-search fs-4"></i>
         <small>Pesquisar</small>
       </a>
 
-      <a href="perfil.html" class="nav-link text-secondary d-flex flex-column align-items-center">
+      <a data-route="/perfil" class="nav-link text-secondary d-flex flex-column align-items-center">
         <i class="bi bi-person-circle fs-4"></i>
         <small>Perfil</small>
       </a>
