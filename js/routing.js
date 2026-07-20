@@ -1,15 +1,15 @@
 // rotas das páginas
 const routes = {
   "/": {
-    page: "login",
+    page: "./pages/login.html",
     title: "Raízes do Nordeste"
   },
   "/notfound": {
-    page: "notfound",
+    page: "./pages/notfound.html",
     title: "404 - Página não encontrada"
   },
   "/login": {
-    page: "login",
+    page: "./pages/login.html",
     title: "Login"
   },
   "/cadastro": {
@@ -17,7 +17,7 @@ const routes = {
     title: "Cadastro"
   },
   "/perfil": {
-    page: "perfil",
+    page: "./pages/perfil.html",
     title: "Meu Perfil"
   },
   "/cardapio": {

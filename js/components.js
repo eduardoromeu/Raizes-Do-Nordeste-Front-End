@@ -44,7 +44,7 @@ async function replaceComponent(id, path) {
 
 // Carrega uma página em um elemento html
 async function loadPage(id, page, pageTitle) {
-  page = (page.endsWith(".html")) ? page : `../pages/${page}.html`;
+  page = (page.endsWith(".html")) ? page : `./pages/${page}.html`;
   await loadComponent(id, page);
   document.title = pageTitle;
 }
