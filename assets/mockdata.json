@@ -1,1 +1,40 @@
-{}
+{
+  "usuarios": [
+    {
+      "nome": "João da Silva",
+      "nivel_acesso": "cliente",
+      "email": "joaosilvada@netmail.com",
+      "telefone": "+5523933020590"
+    },
+    {
+      "nome": "Eduardo Romeu Eberts",
+      "nivel_acesso": "Administrador",
+      "email": "duduromeu@raizesdonordeste.com",
+      "telefone": "+555208267344"
+    },
+    {}
+  ],
+  "unidades": [
+    {
+      "id": 0,
+      "cardapio": [
+        0,
+        1,
+        2,
+        5
+      ]
+    }
+  ],
+  "produtos": [
+    {
+      "id": 0,
+      "titulo": "titulo do produto",
+      "descricao": "descricao do produto",
+      "preco": 0.99,
+      "categorias": [
+        "categoria1",
+        "categoria2"
+      ]
+    }
+  ]
+}
