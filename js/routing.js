@@ -36,64 +36,36 @@ const routes = {
 
 // navega para uma rota
 async function navigate(path) {
-  const route = routes[path];
-
-  if (!route) {
-    return navigate("/notfound");
-  }
-
-  await loadPage(
-    "pageContainer",
-    route.page,
-    route.title
-  );
-
-  history.pushState(
-    {},
-    route.title,
-    path
-  );
+  location.hash = path;
 }
 
-// carrega a página anterior ao voltar pelo navegador
-window.addEventListener(
-  "popstate",
-  () => {
-    renderRoute(
-      window.location.pathname
-    );
-  }
-);
-
 // renderiza a página da rota
-async function renderRoute(path) {
-  const route = routes[path];
-  console.log(`rendering route ${route} from path ${path}`);
-  if (!route) {
-    await loadPage(
-      "pageContainer",
-      "404",
-      "Página não encontrada"
-    );
+async function renderRoute() {
 
-    return;
-  }
+  const path = location.hash.replace("#", "") || "/";
+  const route = routes[path] || routes["/notfound"];
+
+  console.log(`rendering route ${route} from path ${path}`);
 
   await loadPage(
     "pageContainer",
     route.page,
     route.title
   );
+
+  updateNavLinks();
 }
 
 // renderiza a rota atual ao carregar a página
 window.addEventListener(
   "DOMContentLoaded",
-  () => {
-    renderRoute(
-      window.location.pathname
-    );
-  }
+  renderRoute
+);
+
+// chama a renderização da página ao mudar o hash do endereço
+window.addEventListener(
+  "hashchange",
+  renderRoute
 );
 
 // captura o evento de clique para simplificar a declaração da nevegação entre as páginas

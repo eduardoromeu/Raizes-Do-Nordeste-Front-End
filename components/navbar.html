@@ -7,7 +7,8 @@
         <small>Início</small>
       </a>
 
-      <a data-route="/cardapio" class="nav-link text-secondary d-flex flex-column align-items-center">
+      <a data-route="/cardapio" class="nav-link text-secondary d-flex flex-column align-items-center"
+        id="btn-nav-cardapio">
         <i class="bi bi-search fs-4"></i>
         <small>Pesquisar</small>
       </a>
@@ -19,4 +20,8 @@
 
     </div>
   </nav>
+  <script>
+    document.getElementById("btn-nav-cardapio").classList.remove("text-secondary");
+    document.getElementById("btn-nav-cardapio").classList.add("text-primary");
+  </script>
 </template>
