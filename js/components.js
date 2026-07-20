@@ -3,28 +3,48 @@ async function loadComponent(id, path) {
   const response = await fetch(path);
   const html = await response.text();
 
-  document.getElementById(id).innerHTML = html;
+  const temp = document.createElement("div");
+  temp.innerHTML = html;
+
+  const template = temp.querySelector("template");
+
+  const target = document.getElementById(id);
+
+  target.replaceChildren(template.content.cloneNode(true));
 }
 
-async function loadPage(id, page) {
-  const response = await fetch(`../pages/${page}.html`);
+// Substitui um elemento por um componente html
+async function replaceComponent(id, path) {
+  const response = await fetch(path);
   const html = await response.text();
-
-  const container = document.getElementById(id);
 
   const temp = document.createElement("div");
   temp.innerHTML = html;
 
-  const firstChild = temp.firstElementChild;
+  const template = temp.querySelector("template");
 
-  if (firstChild) {
-    container.replaceChildren(...firstChild.children);
+  if (!template) {
+    throw new Error(
+      `Nenhum <template> encontrado em ${path}`
+    );
   }
+
+  const target = document.getElementById(id);
+
+  if (!target) {
+    throw new Error(
+      `Elemento com id "${id}" não encontrado`
+    );
+  }
+
+  const fragment = template.content.cloneNode(true);
+
+  target.replaceWith(...fragment.childNodes);
 }
 
-// async function loadPage(id, page) {
-//   const response = await fetch(`../pages/${page}.html`);
-//   const html = await response.text();
-
-//   document.getElementById(id).innerHTML = html;
-// }
+// Carrega uma página em um elemento html
+async function loadPage(id, page, pageTitle) {
+  page = (page.includes(".html")) ? page : `../pages/${page}.html`;
+  replaceComponent(id, page);
+  document.title = pageTitle;
+}
