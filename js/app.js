@@ -1,7 +1,7 @@
 replaceComponent("navbar", "./components/navbar.html");
 
 // atualiza visual dos links de navegação conforme a página
-function updateNavLinks() {
+function updateNavbar() {
   const currentRoute = location.hash.replace("#", "") || "/";
   const links = document.querySelectorAll(".nav-link");
   links.forEach((link) => {
@@ -15,4 +15,9 @@ function updateNavLinks() {
       link.classList.add("text-secondary");
     }
   });
+  const navBar = document.querySelector("#navbar");
+  if (currentPage && navBar) {
+    if (currentPage.showNavbar) navBar.classList.remove("d-none");
+    else navBar.classList.add("d-none");
+  }
 }

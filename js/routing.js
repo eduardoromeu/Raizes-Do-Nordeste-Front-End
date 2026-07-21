@@ -2,37 +2,48 @@
 const routes = {
   "/": {
     page: "./pages/login.html",
-    title: "Raízes do Nordeste"
+    title: "Raízes do Nordeste",
+    showNavbar: false
   },
   "/notfound": {
     page: "./pages/notfound.html",
-    title: "404 - Página não encontrada"
+    title: "404 - Página não encontrada",
+    showNavbar: true
   },
   "/login": {
     page: "./pages/login.html",
-    title: "Login"
+    title: "Login",
+    showNavbar: false
   },
   "/cadastro": {
     page: "cadastro",
-    title: "Cadastro"
+    title: "Cadastro",
+    showNavbar: false
   },
   "/perfil": {
     page: "./pages/perfil.html",
-    title: "Meu Perfil"
+    title: "Meu Perfil",
+    showNavbar: true
   },
   "/cardapio": {
     page: "cardapio",
-    title: "Cardápio"
+    title: "Cardápio",
+    showNavbar: true
   },
   "/carrinho": {
     page: "carrinho",
-    title: "Carrinho"
+    title: "Carrinho",
+    showNavbar: true
   },
   "/pedido": {
     page: "pedido",
-    title: "Pedido"
+    title: "Pedido",
+    showNavbar: true
   }
 };
+
+// página atual
+let currentPage = routes[0];
 
 // navega para uma rota
 async function navigate(path) {
@@ -45,6 +56,8 @@ async function renderRoute() {
   const path = location.hash.replace("#", "") || "/";
   const route = routes[path] || routes["/notfound"];
 
+  currentPage = route;
+
   console.log(`rendering route ${route} from path ${path}`);
 
   await loadPage(
@@ -53,7 +66,7 @@ async function renderRoute() {
     route.title
   );
 
-  updateNavLinks();
+  updateNavbar();
 }
 
 // renderiza a rota atual ao carregar a página
