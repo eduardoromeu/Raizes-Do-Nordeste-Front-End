@@ -1,0 +1,48 @@
+<template>
+  <div class="container d-flex align-items-center justify-content-center h-100">
+    <div class="card shadow-sm w-100">
+      <div class="card-body">
+        <h1 class="card-title h4 text-center mb-4 pb-3 border-bottom">
+          <i class="bi bi-pencil-fill me-1"></i>
+          Editar Perfil
+        </h1>
+        <form>
+          <div class="mb-3">
+            <label for="username" class="form-label">
+              <i class="bi bi-person-circle me-1"></i>
+              Nome
+            </label>
+            <input type="text" class="form-control" id="username" placeholder="">
+          </div>
+          <div class="mb-3">
+            <label for="telephone" class="form-label">
+              <i class="bi bi-telephone-fill me-1"></i>
+              Telefone
+            </label>
+            <input type="e" class="form-control" id="telephone" placeholder="">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">
+              <i class="bi bi-envelope-at-fill me-1"></i>
+              Email
+            </label>
+            <input type="email" class="form-control" id="email" placeholder="">
+          </div>
+          <div class="mb-3">
+            <label for="curr-password" class="form-label">
+              <i class="bi bi-lock-fill me-1"></i>
+              Alterar Senha
+            </label>
+            <input type="password" class="form-control mb-3" id="curr-password" placeholder="Senha Atual">
+            <input type="password" class="form-control mb-3" id="new-password" placeholder="Nova Senha">
+            <input type="password" class="form-control mb-3" id="confirm-password" placeholder="Confirmar Senha">
+          </div>
+          <button type="submit" onclick="saveProfileEdit()"
+            class="btn btn-outline-success bg-success-subtle text-primary-emphasis w-100">
+            Salvar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>

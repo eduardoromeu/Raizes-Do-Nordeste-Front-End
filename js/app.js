@@ -26,3 +26,8 @@ function logOut() {
   console.log("loging out...");
   navigate("/");
 }
+
+function saveProfileEdit() {
+  console.log("saving profile edit...");
+  navigate("/perfil");
+}

@@ -30,6 +30,11 @@ const routes = {
     title: "Meu Perfil",
     showNavbar: true
   },
+  "/editarperfil": {
+    page: "./pages/editarperfil.html",
+    title: "Editar Perfil",
+    showNavbar: true
+  },
   "/privacidade": {
     page: "privacidade",
     title: "Configurações de privacidade",
