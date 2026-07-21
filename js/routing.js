@@ -1,8 +1,13 @@
 // rotas das páginas
 const routes = {
   "/": {
-    page: "./pages/login.html",
+    page: "./pages/inicio.html",
     title: "Raízes do Nordeste",
+    showNavbar: false
+  },
+  "/unidades": {
+    page: "./pages/unidades.html",
+    title: "Raízes do Nordeste - Unidades",
     showNavbar: false
   },
   "/notfound": {
@@ -25,6 +30,11 @@ const routes = {
     title: "Meu Perfil",
     showNavbar: true
   },
+  "/privacidade": {
+    page: "privacidade",
+    title: "Configurações de privacidade",
+    showNavbar: true
+  },
   "/cardapio": {
     page: "cardapio",
     title: "Cardápio",
@@ -38,6 +48,21 @@ const routes = {
   "/pedido": {
     page: "pedido",
     title: "Pedido",
+    showNavbar: true
+  },
+  "/historicopedidos": {
+    page: "historicopedidos",
+    title: "Histórico de Pedidos",
+    showNavbar: true
+  },
+  "/recuperarsenha": {
+    page: "recuperarsenha",
+    title: "Recuperação de senha",
+    showNavbar: true
+  },
+  "/fidelidade": {
+    page: "fidelidade",
+    title: "Programa de Fidelidade",
     showNavbar: true
   }
 };

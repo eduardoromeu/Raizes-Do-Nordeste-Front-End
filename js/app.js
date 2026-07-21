@@ -21,3 +21,8 @@ function updateNavbar() {
     else navBar.classList.add("d-none");
   }
 }
+
+function logOut() {
+  console.log("loging out...");
+  navigate("/");
+}
