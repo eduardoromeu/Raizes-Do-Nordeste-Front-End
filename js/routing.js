@@ -3,72 +3,107 @@ const routes = {
   "/": {
     page: "./pages/inicio.html",
     title: "Raízes do Nordeste",
-    showNavbar: false
+    showNavbar: false,
+    requerLogin: false,
+    requerUnidade: false
+  },
+  "/inicio": {
+    page: "./pages/inicio.html",
+    title: "Raízes do Nordeste",
+    showNavbar: false,
+    requerLogin: false,
+    requerUnidade: false
   },
   "/unidades": {
     page: "./pages/unidades.html",
     title: "Raízes do Nordeste - Unidades",
-    showNavbar: false
+    showNavbar: true,
+    requerLogin: true,
+    requerUnidade: false
   },
   "/notfound": {
     page: "./pages/notfound.html",
     title: "404 - Página não encontrada",
-    showNavbar: true
+    showNavbar: true,
+    requerLogin: false,
+    requerUnidade: false
   },
   "/login": {
     page: "./pages/login.html",
     title: "Login",
-    showNavbar: false
+    showNavbar: false,
+    requerLogin: false,
+    requerUnidade: false
   },
   "/cadastro": {
     page: "cadastro",
     title: "Cadastro",
-    showNavbar: false
+    showNavbar: false,
+    requerLogin: false,
+    requerUnidade: false
   },
   "/perfil": {
     page: "./pages/perfil.html",
     title: "Meu Perfil",
-    showNavbar: true
+    showNavbar: true,
+    requerLogin: true,
+    requerUnidade: false
   },
   "/editarperfil": {
     page: "./pages/editarperfil.html",
     title: "Editar Perfil",
-    showNavbar: true
+    showNavbar: false,
+    requerLogin: true,
+    requerUnidade: false
   },
   "/privacidade": {
     page: "privacidade",
     title: "Configurações de privacidade",
-    showNavbar: true
+    showNavbar: true,
+    requerLogin: true,
+    requerUnidade: false
   },
   "/cardapio": {
     page: "cardapio",
     title: "Cardápio",
-    showNavbar: true
+    showNavbar: true,
+    requerLogin: true,
+    requerUnidade: true
   },
   "/carrinho": {
     page: "carrinho",
     title: "Carrinho",
-    showNavbar: true
+    showNavbar: true,
+    requerLogin: true,
+    requerUnidade: true
   },
   "/pedido": {
     page: "pedido",
     title: "Pedido",
-    showNavbar: true
+    showNavbar: true,
+    requerLogin: true,
+    requerUnidade: true
   },
   "/historicopedidos": {
     page: "historicopedidos",
     title: "Histórico de Pedidos",
-    showNavbar: true
+    showNavbar: true,
+    requerLogin: true,
+    requerUnidade: true
   },
   "/recuperarsenha": {
     page: "recuperarsenha",
     title: "Recuperação de senha",
-    showNavbar: true
+    showNavbar: false,
+    requerLogin: false,
+    requerUnidade: false
   },
   "/fidelidade": {
     page: "fidelidade",
     title: "Programa de Fidelidade",
-    showNavbar: true
+    showNavbar: true,
+    requerLogin: true,
+    requerUnidade: false
   }
 };
 
@@ -84,11 +119,27 @@ async function navigate(path) {
 async function renderRoute() {
 
   const path = location.hash.replace("#", "") || "/";
-  const route = routes[path] || routes["/notfound"];
+  let route = routes[path] || routes["/notfound"];
+
+  console.log(`1 rendering route ${route} from path ${path}`);
+
+  if (route.requerLogin && !userLogado) {
+    // route = routes["/"];
+    navigate("/");
+    return;
+  }
+
+  console.log(`2 rendering route ${route} from path ${path}`);
+
+  if (route.requerUnidade && unidadeAtual == null) {
+    // route = routes["/unidades"];
+    navigate("/unidades");
+    return;
+  }
 
   currentPage = route;
 
-  console.log(`rendering route ${route} from path ${path}`);
+  console.log(`3 rendering route ${route} from path ${path}`);
 
   await loadPage(
     "pageContainer",
