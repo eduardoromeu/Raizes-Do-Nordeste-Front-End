@@ -68,7 +68,8 @@ const routes = {
     title: "Cardápio",
     showNavbar: true,
     requerLogin: true,
-    requerUnidade: true
+    requerUnidade: true,
+    onLoad: () => loadCardapio()
   },
   "/carrinho": {
     page: "carrinho",
@@ -146,6 +147,10 @@ async function renderRoute() {
     route.page,
     route.title
   );
+
+  if (route.onLoad && typeof route.onLoad == 'function') {
+    route.onLoad();
+  }
 
   updateNavbar();
 }
