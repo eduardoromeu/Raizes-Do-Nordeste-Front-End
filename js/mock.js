@@ -1,5 +1,5 @@
 const MOCK_DATA_URL = "./assets/mockdata.json";
-const MOCK_STORAGE_USER_KEY = "raizes_nordeste_usuario";
+const MOCK_REGISTERED_USERS_KEY = "raizes_nordeste_registered_users";
 
 async function loadMockData() {
   const response = await fetch(MOCK_DATA_URL);
@@ -11,41 +11,53 @@ async function loadMockData() {
   return data;
 }
 
-function loadStoredUser() {
-  const storedUser = localStorage.getItem(MOCK_STORAGE_USER_KEY);
-  if (!storedUser) {
-    return null;
+function loadRegisteredUsers() {
+  const savedUsers = localStorage.getItem(MOCK_REGISTERED_USERS_KEY);
+  if (!savedUsers) {
+    return [];
   }
 
   try {
-    return JSON.parse(storedUser);
+    return JSON.parse(savedUsers);
   } catch (error) {
-    console.error("Falha ao ler usuário armazenado no mock", error);
-    return null;
+    console.error("Falha ao ler usuários registrados do localStorage", error);
+    return [];
   }
 }
 
-async function authenticateUser(userAccess, password) {
-  console.log(`autenticando usuário ${userAccess} senha ${password}`);
-  const loginValue = userAccess.toLowerCase();
-  const storedUser = loadStoredUser();
+function saveRegisteredUsers(users) {
+  localStorage.setItem(MOCK_REGISTERED_USERS_KEY, JSON.stringify(users));
+}
+
+function normalizeLogin(value) {
+  return value?.toString().trim().toLowerCase() || "";
+}
+
+function userMatchesLogin(user, loginValue) {
+  const normalizedLogin = normalizeLogin(loginValue);
+  return [user.email, user.nome, user.telefone]
+    .map(normalizeLogin)
+    .some((item) => item === normalizedLogin);
+}
+
+async function findUserByLogin(userAccess) {
+  const loginValue = normalizeLogin(userAccess);
+  if (!loginValue) {
+    return null;
+  }
+
+  const registeredUsers = loadRegisteredUsers();
+  const storedUser = registeredUsers.find((user) => userMatchesLogin(user, loginValue));
   if (storedUser) {
-    const storedLogin = storedUser.email?.toLowerCase() || storedUser.nome?.toLowerCase() || storedUser.telefone?.toLowerCase();
-    if (storedLogin === loginValue && storedUser.senha === password) {
-      return storedUser;
-    }
+    return storedUser;
   }
 
   const data = await loadMockData();
-  const user = data.usuarios.find((item) => {
-    if (!item) return false;
-    return (
-      item.email?.toLowerCase() === loginValue ||
-      item.telefone?.toLowerCase() === loginValue ||
-      item.nome?.toLowerCase() === loginValue
-    );
-  });
+  return data.usuarios.find((user) => userMatchesLogin(user, loginValue)) || null;
+}
 
+async function authenticateUser(userAccess, password) {
+  const user = await findUserByLogin(userAccess);
   if (!user || user.senha !== password) {
     return null;
   }
@@ -57,4 +69,73 @@ async function authenticateUser(userAccess, password) {
     nivel_acesso: user.nivel_acesso,
     senha: user.senha
   };
+}
+
+async function createMockUser(userData) {
+  const newUser = {
+    nome: userData.nome?.trim(),
+    email: userData.email?.trim(),
+    telefone: userData.telefone?.trim(),
+    senha: userData.senha,
+    nivel_acesso: userData.nivel_acesso || "cliente"
+  };
+
+  if (!newUser.nome || !newUser.email || !newUser.senha) {
+    return null;
+  }
+
+  const duplicateByEmail = await findUserByLogin(newUser.email);
+  if (duplicateByEmail) {
+    return null;
+  }
+
+  const duplicateByName = await findUserByLogin(newUser.nome);
+  if (duplicateByName) {
+    return null;
+  }
+
+  const registeredUsers = loadRegisteredUsers();
+  registeredUsers.push(newUser);
+  saveRegisteredUsers(registeredUsers);
+
+  return newUser;
+}
+
+async function updateMockUser(originalEmail, userData) {
+  const registeredUsers = loadRegisteredUsers();
+  const normalizedOriginalEmail = normalizeLogin(originalEmail);
+  const updatedUser = {
+    nome: userData.nome?.trim(),
+    email: userData.email?.trim(),
+    telefone: userData.telefone?.trim(),
+    senha: userData.senha,
+    nivel_acesso: userData.nivel_acesso || "cliente"
+  };
+
+  if (!updatedUser.nome || !updatedUser.email || !updatedUser.senha) {
+    return null;
+  }
+
+  const duplicateByEmail = await findUserByLogin(updatedUser.email);
+  if (duplicateByEmail && normalizeLogin(duplicateByEmail.email) !== normalizedOriginalEmail) {
+    return null;
+  }
+
+  const duplicateByName = await findUserByLogin(updatedUser.nome);
+  if (duplicateByName && normalizeLogin(duplicateByName.email) !== normalizedOriginalEmail) {
+    return null;
+  }
+
+  const existingIndex = registeredUsers.findIndex(
+    (user) => normalizeLogin(user.email) === normalizedOriginalEmail || normalizeLogin(user.nome) === normalizedOriginalEmail
+  );
+
+  if (existingIndex >= 0) {
+    registeredUsers[existingIndex] = updatedUser;
+  } else {
+    registeredUsers.push(updatedUser);
+  }
+
+  saveRegisteredUsers(registeredUsers);
+  return updatedUser;
 }

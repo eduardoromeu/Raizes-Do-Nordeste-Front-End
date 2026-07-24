@@ -5,14 +5,16 @@ const routes = {
     title: "Raízes do Nordeste",
     showNavbar: false,
     requerLogin: false,
-    requerUnidade: false
+    requerUnidade: false,
+    onLoad: () => checkUserStartPage()
   },
   "/inicio": {
     page: "./pages/inicio.html",
     title: "Raízes do Nordeste",
     showNavbar: false,
     requerLogin: false,
-    requerUnidade: false
+    requerUnidade: false,
+    onLoad: () => checkUserStartPage()
   },
   "/unidades": {
     page: "./pages/unidades.html",

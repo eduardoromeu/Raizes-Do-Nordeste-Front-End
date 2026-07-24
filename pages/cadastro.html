@@ -6,31 +6,36 @@
           <i class="bi bi-person-fill-add" style="font-size:2rem;"></i>
         </div>
         <h1 class="card-title h4 text-center mb-4">Cadastrar-se</h1>
-        <form>
+        <form onsubmit="return registerUser(event)">
           <div class="mb-3">
             <i class="bi bi-person-circle me-1"></i>
-            <label for="username" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="username" placeholder="Digite seu usuário">
+            <label for="register-name" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="register-name" placeholder="Digite seu nome completo">
           </div>
           <div class="mb-3">
-            <label for="email" class="form-label">
+            <label for="register-email" class="form-label">
               <i class="bi bi-envelope-at-fill me-1"></i>
               Email
             </label>
-            <input type="email" class="form-control" id="email" placeholder="">
+            <input type="email" class="form-control" id="register-email" placeholder="Digite seu e-mail">
           </div>
           <div class="mb-3">
-            <label for="telephone" class="form-label">
+            <label for="register-telephone" class="form-label">
               <i class="bi bi-telephone-fill me-1"></i>
               Telefone
             </label>
-            <input type="e" class="form-control" id="telephone" placeholder="">
+            <input type="tel" class="form-control" id="register-telephone" placeholder="Digite seu telefone">
           </div>
           <div class="mb-3">
             <i class="bi bi-lock-fill me-1"></i>
-            <label for="password" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
+            <label for="register-password" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="register-password" placeholder="Digite sua senha">
           </div>
+          <div class="mb-3">
+            <label for="register-confirm-password" class="form-label">Confirmar Senha</label>
+            <input type="password" class="form-control" id="register-confirm-password" placeholder="Confirme sua senha">
+          </div>
+          <div id="register-message" class="visually-hidden small mb-3" role="alert"></div>
           <button type="submit"
             class="btn btn-outline-primary bg-primary-subtle text-primary-emphasis w-100">Cadastrar</button>
         </form>
