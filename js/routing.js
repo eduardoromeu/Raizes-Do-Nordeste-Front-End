@@ -99,6 +99,13 @@ const routes = {
     requerLogin: false,
     requerUnidade: false
   },
+  "/confirmrecuperacao": {
+    page: "confirmrecuperacao",
+    title: "Recuperação de senha",
+    showNavbar: false,
+    requerLogin: false,
+    requerUnidade: false
+  },
   "/fidelidade": {
     page: "fidelidade",
     title: "Programa de Fidelidade",
@@ -124,10 +131,9 @@ async function renderRoute() {
 
 
   if (route.requerLogin && !userLogado) {
-    navigate("/");
+    navigate("/login");
     return;
   }
-
 
   if (route.requerUnidade && unidadeAtual == null) {
     navigate("/unidades");
@@ -147,6 +153,10 @@ async function renderRoute() {
   }
 
   updateNavbar();
+
+  if (typeof updateUserInterface === 'function') {
+    updateUserInterface();
+  }
 }
 
 // renderiza a rota atual ao carregar a página
