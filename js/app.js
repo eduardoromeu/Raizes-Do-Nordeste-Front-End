@@ -93,6 +93,146 @@ function clearLoginError() {
   }
 }
 
+function showEditProfileMessage(message, type = "error") {
+  const messageElement = document.getElementById("edit-profile-message");
+  if (!messageElement) return;
+
+  messageElement.textContent = message;
+  messageElement.classList.remove("text-success", "text-danger", "visually-hidden");
+  messageElement.classList.add(type === "success" ? "text-success" : "text-danger");
+}
+
+function clearEditProfileMessage() {
+  const messageElement = document.getElementById("edit-profile-message");
+  if (!messageElement) return;
+
+  messageElement.textContent = "";
+  messageElement.classList.add("visually-hidden");
+}
+
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function populateEditProfileForm() {
+  clearEditProfileMessage();
+  if (!currentUser) {
+    return;
+  }
+
+  const usernameInput = document.getElementById("username");
+  const telephoneInput = document.getElementById("telephone");
+  const emailInput = document.getElementById("email");
+  const currentPasswordInput = document.getElementById("curr-password");
+  const newPasswordInput = document.getElementById("new-password");
+  const confirmPasswordInput = document.getElementById("confirm-password");
+
+  if (usernameInput) {
+    usernameInput.value = currentUser.nome || "";
+  }
+  if (telephoneInput) {
+    telephoneInput.value = currentUser.telefone || "";
+  }
+  if (emailInput) {
+    emailInput.value = currentUser.email || "";
+  }
+  if (currentPasswordInput) {
+    currentPasswordInput.value = "";
+  }
+  if (newPasswordInput) {
+    newPasswordInput.value = "";
+  }
+  if (confirmPasswordInput) {
+    confirmPasswordInput.value = "";
+  }
+}
+
+async function saveProfileEdit(event) {
+  if (event) {
+    event.preventDefault();
+  }
+
+  clearEditProfileMessage();
+
+  const usernameInput = document.getElementById("username");
+  const telephoneInput = document.getElementById("telephone");
+  const emailInput = document.getElementById("email");
+  const currentPasswordInput = document.getElementById("curr-password");
+  const newPasswordInput = document.getElementById("new-password");
+  const confirmPasswordInput = document.getElementById("confirm-password");
+
+  if (!usernameInput || !telephoneInput || !emailInput || !currentPasswordInput || !newPasswordInput || !confirmPasswordInput) {
+    showEditProfileMessage("Ocorreu um erro no formulário de edição.");
+    return false;
+  }
+
+  const nameValue = usernameInput.value.trim();
+  const telephoneValue = telephoneInput.value.trim();
+  const emailValue = emailInput.value.trim();
+  const currentPasswordValue = currentPasswordInput.value.trim();
+  const newPasswordValue = newPasswordInput.value.trim();
+  const confirmPasswordValue = confirmPasswordInput.value.trim();
+
+  if (!nameValue) {
+    showEditProfileMessage("O nome não pode ficar em branco.");
+    return false;
+  }
+
+  if (!emailValue || !isValidEmail(emailValue)) {
+    showEditProfileMessage("Informe um e-mail válido.");
+    return false;
+  }
+
+  if (!telephoneValue) {
+    showEditProfileMessage("Informe um telefone válido.");
+    return false;
+  }
+
+  if (newPasswordValue || confirmPasswordValue) {
+    if (!currentPasswordValue) {
+      showEditProfileMessage("Informe sua senha atual para alterar a senha.");
+      return false;
+    }
+
+    if (newPasswordValue !== confirmPasswordValue) {
+      showEditProfileMessage("As senhas não coincidem.");
+      return false;
+    }
+
+    if (!currentUser || !currentUser.email) {
+      showEditProfileMessage("Não foi possível validar sua senha atual.");
+      return false;
+    }
+
+    try {
+      const validated = await authenticateUser(currentUser.email, currentPasswordValue);
+      if (!validated) {
+        showEditProfileMessage("Senha atual incorreta.");
+        return false;
+      }
+      currentUser.senha = newPasswordValue;
+    } catch (error) {
+      console.error("Erro ao validar senha atual", error);
+      showEditProfileMessage("Erro ao validar a senha atual.");
+      return false;
+    }
+  }
+
+  currentUser.nome = nameValue;
+  currentUser.telefone = telephoneValue;
+  currentUser.email = emailValue;
+
+  saveUserToStorage(currentUser);
+  showEditProfileMessage("Dados atualizados com sucesso.", "success");
+  updateUserInterface();
+
+  setTimeout(() => {
+    navigate("/perfil");
+  }, 800);
+
+  return false;
+}
+
 async function logIn(event) {
   if (event) {
     event.preventDefault();
@@ -100,19 +240,19 @@ async function logIn(event) {
 
   clearLoginError();
 
-  const usernameInput = document.getElementById("username");
+  const accessInput = document.getElementById("username");
   const passwordInput = document.getElementById("password");
 
-  if (!usernameInput || !passwordInput) {
+  if (!accessInput || !passwordInput) {
     showLoginError("Ocorreu um erro no formulário de login.");
     return false;
   }
 
-  const username = usernameInput.value.trim();
+  const username = accessInput.value.trim();
   const password = passwordInput.value.trim();
 
   if (!username || !password) {
-    showLoginError("Preencha usuário e senha para continuar.");
+    showLoginError("Preencha todos os campos para continuar.");
     return false;
   }
 
@@ -143,10 +283,6 @@ function logOut() {
   clearUserStorage();
   clearUnidadeStorage();
   navigate("/");
-}
-
-function saveProfileEdit() {
-  navigate("/perfil");
 }
 
 function selecionarUnidade(unidade) {

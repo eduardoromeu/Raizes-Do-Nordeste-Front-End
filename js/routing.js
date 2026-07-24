@@ -54,7 +54,8 @@ const routes = {
     title: "Editar Perfil",
     showNavbar: false,
     requerLogin: true,
-    requerUnidade: false
+    requerUnidade: false,
+    onLoad: () => populateEditProfileForm()
   },
   "/privacidade": {
     page: "privacidade",

@@ -6,7 +6,7 @@
           <i class="bi bi-pencil-fill me-1"></i>
           Editar Perfil
         </h1>
-        <form>
+        <form onsubmit="return saveProfileEdit(event)">
           <div class="mb-3">
             <label for="username" class="form-label">
               <i class="bi bi-person-circle me-1"></i>
@@ -19,14 +19,14 @@
               <i class="bi bi-telephone-fill me-1"></i>
               Telefone
             </label>
-            <input type="e" class="form-control" id="telephone" placeholder="">
+            <input type="tel" class="form-control" id="telephone" placeholder="" required>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">
               <i class="bi bi-envelope-at-fill me-1"></i>
               Email
             </label>
-            <input type="email" class="form-control" id="email" placeholder="">
+            <input type="email" class="form-control" id="email" placeholder="" required>
           </div>
           <div class="mb-3">
             <label for="curr-password" class="form-label">
@@ -37,7 +37,8 @@
             <input type="password" class="form-control mb-3" id="new-password" placeholder="Nova Senha">
             <input type="password" class="form-control mb-3" id="confirm-password" placeholder="Confirmar Senha">
           </div>
-          <button type="submit" onclick="saveProfileEdit()"
+          <div id="edit-profile-message" class="visually-hidden small mb-3" role="alert"></div>
+          <button type="submit" onsubmit="saveProfileEdit()"
             class="btn btn-outline-success bg-success-subtle text-primary-emphasis w-100">
             Salvar
           </button>

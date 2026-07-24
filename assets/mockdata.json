@@ -4,14 +4,14 @@
       "nome": "João da Silva",
       "nivel_acesso": "cliente",
       "email": "joaosilvada@netmail.com",
-      "telefone": "+5523933020590",
+      "telefone": "23933020590",
       "senha": "cliente123"
     },
     {
       "nome": "Eduardo Romeu Eberts",
       "nivel_acesso": "Administrador",
       "email": "duduromeu@raizesdonordeste.com",
-      "telefone": "+555208267344",
+      "telefone": "5208267344",
       "senha": "admin123"
     }
   ],
