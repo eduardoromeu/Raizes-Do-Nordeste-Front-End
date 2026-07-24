@@ -6,8 +6,9 @@ function updateNavbar() {
   const links = document.querySelectorAll(".nav-link");
   links.forEach((link) => {
     const route = link.dataset.route;
+    const hg = link.dataset.highlightAt;
 
-    if (route === currentRoute) {
+    if (route === currentRoute || hg === currentRoute) {
       link.classList.remove("text-secondary");
       link.classList.add("text-primary");
     } else {
