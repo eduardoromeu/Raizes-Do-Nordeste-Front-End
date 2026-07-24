@@ -109,7 +109,7 @@ const routes = {
 };
 
 // página atual
-let currentPage = routes[0];
+let currentPage = routes['/'];
 
 // navega para uma rota
 async function navigate(path) {
@@ -122,25 +122,19 @@ async function renderRoute() {
   const path = location.hash.replace("#", "") || "/";
   let route = routes[path] || routes["/notfound"];
 
-  console.log(`1 rendering route ${route} from path ${path}`);
 
   if (route.requerLogin && !userLogado) {
-    // route = routes["/"];
     navigate("/");
     return;
   }
 
-  console.log(`2 rendering route ${route} from path ${path}`);
 
   if (route.requerUnidade && unidadeAtual == null) {
-    // route = routes["/unidades"];
     navigate("/unidades");
     return;
   }
 
   currentPage = route;
-
-  console.log(`3 rendering route ${route} from path ${path}`);
 
   await loadPage(
     "pageContainer",
