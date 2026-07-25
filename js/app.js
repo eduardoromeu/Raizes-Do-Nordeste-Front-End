@@ -407,11 +407,16 @@ function updateUserInterface() {
   if (usernameText && currentUser) {
     usernameText.textContent = currentUser.nome;
   }
+
+  const unidadeText = document.getElementById("nome-unidade-atual");
+  if (unidadeText && unidadeAtual) {
+    unidadeText.textContent = unidadeAtual;
+  }
 }
 
 function checkUserStartPage() {
   if (userLogado && currentUser) {
-    navigate('/cardapio');
+    navigate('/inicio');
   }
 }
 

@@ -1,3 +1,7 @@
 #pageContainer.navPadding {
   padding-bottom: 72px;
 }
+
+.nav-placeholder {
+  width: 40px;
+}

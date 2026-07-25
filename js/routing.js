@@ -1,7 +1,7 @@
 // rotas das páginas
 const routes = {
   "/": {
-    page: "./pages/inicio.html",
+    page: "./pages/acesso.html",
     title: "Raízes do Nordeste",
     showNavbar: false,
     requerLogin: false,
@@ -11,10 +11,9 @@ const routes = {
   "/inicio": {
     page: "./pages/inicio.html",
     title: "Raízes do Nordeste",
-    showNavbar: false,
-    requerLogin: false,
+    showNavbar: true,
+    requerLogin: true,
     requerUnidade: false,
-    onLoad: () => checkUserStartPage()
   },
   "/unidades": {
     page: "./pages/unidades.html",

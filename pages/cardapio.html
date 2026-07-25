@@ -1,7 +1,29 @@
 <template>
-  <div class="container py-4">
-    <div class="mb-4 text-center">
-      <h1 class="fw-bold">Cardápio</h1>
-
+  <nav class="navbar bg-light shadow-sm">
+    <div class="container-fluid p-0 d-flex justify-content-between">
+      <btn data-route="/unidades" class="btn btn-sm btn-outline-secondary" aria-label="Voltar para unidades">
+        <i class="bi bi-chevron-left me-2" aria-hidden="true"></i>Voltar
+      </btn>
+      <div class="text-center fw-bold text-capitalize flex-grow-1">
+        Unidade
+        <span id="nome-unidade-atual"></span>
+      </div>
+      <div class="nav-placeholder"></div>
     </div>
+  </nav>
+
+  <div class="container py-4">
+    <h1 class="fw-bold mb-3">Cardápio</h1>
+
+    <div class="input-group" id="pesquisa-cardapio">
+      <div class="input-group-text" id="text-pesquisa-cardapio">
+        <i class="bi bi-search"></i>
+      </div>
+      <input type="text" class="form-control" placeholder="Digite para pesquisar" aria-label="Input group example"
+        aria-describedby="text-pesquisa-cardapio">
+    </div>
+  </div>
+
+
+
 </template>
