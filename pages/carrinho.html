@@ -1,11 +1,27 @@
 <template>
-  <div class="container py-4">
+  <div class="container py-4 d-flex flex-column flex-grow-1">
     <h1 class="fw-bold mb-3">Carrinho</h1>
 
-    <div id="container-carrinho" class="container-fluid p-0">
-      <div id="produto-carrinho"></div>
-      <div id="produto-carrinho2"></div>
-      <div id="produto-carrinho3"></div>
+    <div class="text-center text-muted py-4" id="empty-cart-text">
+      <p>Seu carrinho está vazio.</p>
     </div>
+
+    <div id="container-carrinho" class="container-fluid p-0 flex-grow-1">
+
+    </div>
+
+    <!-- Rodapé do carrinho: total e botão prosseguir -->
+    <div id="cart-footer" class="bg-white border-top py-2 px-2 d-none mt-auto">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div>
+          <div class="small text-muted">Total</div>
+          <div id="cart-total-amount" class="fw-bold fs-5">R$ 0,00</div>
+        </div>
+        <div>
+          <button data-route="/confirmpedido" id="cart-proceed-btn" class="btn btn-primary btn-lg">Prosseguir</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
