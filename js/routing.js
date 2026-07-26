@@ -79,7 +79,8 @@ const routes = {
     title: "Carrinho",
     showNavbar: true,
     requerLogin: true,
-    requerUnidade: true
+    requerUnidade: false,
+    onLoad: () => carregarCarrinho()
   },
   "/pedido": {
     page: "pedido",

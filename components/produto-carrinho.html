@@ -1,0 +1,26 @@
+<template>
+  <div class="row g-2 my-1 align-items-stretch produto-carrinho border-bottom pb-2" data-id-produto="0">
+    <div class="col-3 col-sm-2">
+      <img src="./assets/imagens-produtos/tapioca-carne.jpg" alt="Imagem do produto"
+        class="img-fluid rounded produto-carrinho-img">
+    </div>
+    <div class="col-6 col-sm-7 overflow-x-hidden">
+      <h6 class="mb-1 produto-carrinho-titulo">Produto com o nome beem grande</h6>
+      <div class="fw-semibold produto-carrinho-preco">R$ 0,00</div>
+    </div>
+    <div class="col-3 col-sm-3 d-flex flex-column align-items-center justify-content-end gap-2">
+      <div class="btn-group btn-group-sm" role="group" aria-label="Quantidade">
+        <button type="button" class="btn btn-sm btn-outline-secondary" aria-label="Diminuir quantidade">
+          <i class="bi bi-dash"></i>
+        </button>
+        <span
+          class="d-inline-flex align-items-center produto-quantity border-top border-bottom border-secondary px-2">1</span>
+        <button type="button" class="btn btn-sm btn-outline-secondary" aria-label="Aumentar quantidade"><i
+            class="bi bi-plus"></i></button>
+      </div>
+      <!-- <button type="button" class="btn btn-link text-danger btn-remove" aria-label="Remover produto">
+        <i class="bi bi-trash"></i> Trocar icone se quantidade == 1
+      </button> -->
+    </div>
+  </div>
+</template>
