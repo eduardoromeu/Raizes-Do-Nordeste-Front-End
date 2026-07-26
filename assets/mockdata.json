@@ -19,7 +19,7 @@
     {
       "id": 0,
       "nome": "Matriz",
-      "endereco": "R. Tal, n. 12",
+      "endereco": "Rua Tal, n. 12, Centro",
       "imagem": "https://free-images.com/md/9b0e/restaurant_gastronomy_koblenz_human.jpg",
       "cardapio": [
         0,
@@ -31,11 +31,11 @@
     {
       "id": 1,
       "nome": "Praia",
-      "endereco": "R. Orla, n. 589",
+      "endereco": "Rua Orla, n. 589, Praia do Cocal",
       "imagem": "https://free-images.com/md/9865/ponferrada_calle_gil_y_0.jpg",
       "cardapio": [
         0,
-        1
+        2
       ]
     },
     {
@@ -44,7 +44,7 @@
       "endereco": "R. Viela, n. 76",
       "imagem": "https://free-images.com/md/4dc8/restaurant_seats_table_chairs.jpg",
       "cardapio": [
-        2,
+        1,
         5
       ]
     }
@@ -52,8 +52,8 @@
   "produtos": [
     {
       "id": 0,
-      "titulo": "Tapioca com Carne de Sol",
-      "descricao": "Tapioca com Carne de Sol",
+      "titulo": "Tapioca Carne de Sol",
+      "descricao": "Tapioca Com Carne de Sol",
       "imagem": "./assets/imagens-produtos/tapioca-carne.jpg",
       "preco": 14.99,
       "categorias": [

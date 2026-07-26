@@ -1,20 +1,15 @@
 <template>
-  <nav class="navbar bg-light shadow-sm">
-    <div class="container-fluid p-0 d-flex justify-content-between">
-      <btn data-route="/unidades" class="btn btn-sm btn-outline-secondary" aria-label="Voltar para unidades"
-        onclick="clearUnidadeStorage()">
-        <i class="bi bi-chevron-left me-2" aria-hidden="true"></i>Voltar
-      </btn>
-      <div class="text-center fw-bold text-capitalize flex-grow-1">
-        Unidade
-        <span id="nome-unidade-atual"></span>
-      </div>
-      <div class="nav-placeholder"></div>
-    </div>
-  </nav>
-
   <div class="container py-4">
-    <h1 class="fw-bold mb-3">Cardápio</h1>
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h1 class="fw-bold m-0">Cardápio</h1>
+
+      <button type="button" data-route="/unidades" class="btn btn-sm d-flex align-items-center gap-1 flex-nowrap"
+        aria-label="Selecionar unidade" onclick="clearUnidadeStorage()">
+        <span class="fw-semibold text-capitalize">Unidade</span>
+        <span id="nome-unidade-atual" class="fw-semibold"></span>
+        <i class="bi bi-chevron-down fs-6" aria-hidden="true"></i>
+      </button>
+    </div>
 
     <div class="input-group" id="pesquisa-cardapio">
       <div class="input-group-text" id="text-pesquisa-cardapio">
@@ -25,23 +20,6 @@
     </div>
 
     <div id="container-cardapio" class="container p-0 mt-2 d-flex flex-column">
-
-      <div class="card card-produto">
-        <div class="container-img-produto ratio ratio-16x9">
-          <img src="./assets/imagens-produtos/tapioca-carne.jpg" class="card-img-top img-produto object-fit-cover"
-            alt="imagem do produto">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Produto</h5>
-          <p class="card-text text-muted">
-            R$ 10,99
-          </p>
-          <a href="#" class="btn btn-sm btn-outline-primary">
-            <i class="bi bi-cart-plus-fill me-1"></i>
-            Adicionar ao carrinho
-          </a>
-        </div>
-      </div>
 
     </div>
   </div>

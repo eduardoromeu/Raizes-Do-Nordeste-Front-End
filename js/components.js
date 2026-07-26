@@ -33,6 +33,32 @@ async function loadComponent(id, path) {
   }
 }
 
+// Carrega o conteúdo de um template HTML sem renderizá-lo em um container
+async function loadTemplate(path) {
+  try {
+    const response = await fetch(path);
+    if (!response.ok) {
+      console.error(`Falha ao carregar ${path}: ${response.status}`);
+      return null;
+    }
+
+    const html = await response.text();
+    const temp = document.createElement("div");
+    temp.innerHTML = html;
+
+    const template = temp.querySelector("template");
+    if (!template) {
+      console.error(`Template do componente ${path} não encontrado`);
+      return null;
+    }
+
+    return template.content;
+  } catch (error) {
+    console.error(`Erro ao carregar componente ${path}:`, error);
+    return null;
+  }
+}
+
 // Substitui um elemento por um componente html
 async function replaceComponent(id, path) {
   try {

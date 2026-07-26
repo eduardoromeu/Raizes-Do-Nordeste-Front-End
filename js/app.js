@@ -1,8 +1,6 @@
 const STORAGE_USER_KEY = "raizes_nordeste_usuario";
 const STORAGE_UNIDADE_KEY = "raizes_nordeste_unidade";
 
-replaceComponent("navbar", "./components/navbar.html");
-
 let userLogado = false;
 let currentUser = null;
 let unidadeAtual = null;
@@ -22,28 +20,6 @@ function loadAppState() {
   if (storedUnidade) {
     unidadeAtual = storedUnidade;
   }
-}
-
-function saveUserToStorage(user) {
-  currentUser = user;
-  userLogado = Boolean(user && user.nome);
-  localStorage.setItem(STORAGE_USER_KEY, JSON.stringify(user));
-}
-
-function clearUserStorage() {
-  currentUser = null;
-  userLogado = false;
-  localStorage.removeItem(STORAGE_USER_KEY);
-}
-
-function saveUnidadeToStorage(unidade) {
-  unidadeAtual = unidade;
-  localStorage.setItem(STORAGE_UNIDADE_KEY, unidade);
-}
-
-function clearUnidadeStorage() {
-  unidadeAtual = null;
-  localStorage.removeItem(STORAGE_UNIDADE_KEY);
 }
 
 function updateNavbar() {
@@ -421,35 +397,27 @@ function checkUserStartPage() {
 }
 
 async function carregarUnidades() {
+  console.log("carregando unidades...");
   const container = document.getElementById("container-unidades");
   if (!container) return; // página não está presente no DOM
 
   try {
-    const [dataResp, compResp] = await Promise.all([
-      fetch("./assets/mockdata.json"),
-      fetch("./components/card-unidade.html")
+    const [unidades, template] = await Promise.all([
+      getMockUnidades(),
+      loadTemplate("./components/card-unidade.html")
     ]);
 
-    if (!dataResp.ok) throw new Error(`Falha ao carregar mockdata: ${dataResp.status}`);
-    if (!compResp.ok) throw new Error(`Falha ao carregar componente card-unidade: ${compResp.status}`);
-
-    const data = await dataResp.json();
-    const compHtml = await compResp.text();
-
-    const temp = document.createElement("div");
-    temp.innerHTML = compHtml;
-    const template = temp.querySelector("template");
     if (!template) throw new Error("Template do componente card-unidade não encontrado");
 
     // procura a coluna dentro do template para clonar por unidade
-    const fragment = template.content.cloneNode(true);
+    const fragment = template.cloneNode(true);
     const colTemplate = fragment.querySelector('.col-12.col-md-4') || fragment.querySelector('.col-12');
     if (!colTemplate) throw new Error('Estrutura esperada (coluna) não encontrada no template de card-unidade');
 
     const row = document.createElement('div');
     row.className = 'row g-4 h-100';
 
-    (data.unidades || []).forEach((u) => {
+    unidades.forEach((u) => {
       const col = colTemplate.cloneNode(true);
 
       // ajustar link
@@ -500,7 +468,6 @@ async function carregarUnidades() {
   }
 }
 
-// Tenta carregar unidades imediatamente (se a página unidades estiver carregada)
-carregarUnidades();
-
 loadAppState();
+
+replaceComponent("navbar", "./components/navbar.html");

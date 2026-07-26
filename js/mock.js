@@ -1,14 +1,50 @@
 const MOCK_DATA_URL = "./assets/mockdata.json";
 const MOCK_REGISTERED_USERS_KEY = "raizes_nordeste_registered_users";
+let mockDataCache = null;
 
 async function loadMockData() {
+  if (mockDataCache) {
+    return mockDataCache;
+  }
+
   const response = await fetch(MOCK_DATA_URL);
   if (!response.ok) {
     throw new Error(`Falha ao carregar dados mock: ${response.status}`);
   }
 
   const data = await response.json();
+  mockDataCache = data;
   return data;
+}
+
+function saveUnidadeToStorage(unidade) {
+  unidadeAtual = unidade;
+  localStorage.setItem(STORAGE_UNIDADE_KEY, unidade);
+}
+
+function clearUnidadeStorage() {
+  unidadeAtual = null;
+  localStorage.removeItem(STORAGE_UNIDADE_KEY);
+}
+
+async function getMockUnidades() {
+  const data = await loadMockData();
+  return data.unidades || [];
+}
+
+async function getMockProdutos() {
+  const data = await loadMockData();
+  return data.produtos || [];
+}
+
+async function getMockUnidadeById(unidadeId) {
+  const unidades = await getMockUnidades();
+  return unidades.find((unidade) => unidade.id === Number(unidadeId)) || null;
+}
+
+async function getMockProdutoById(produtoId) {
+  const produtos = await getMockProdutos();
+  return produtos.find((produto) => produto.id === Number(produtoId)) || null;
 }
 
 function loadRegisteredUsers() {
@@ -138,4 +174,16 @@ async function updateMockUser(originalEmail, userData) {
 
   saveRegisteredUsers(registeredUsers);
   return updatedUser;
+}
+
+function saveUserToStorage(user) {
+  currentUser = user;
+  userLogado = Boolean(user && user.nome);
+  localStorage.setItem(STORAGE_USER_KEY, JSON.stringify(user));
+}
+
+function clearUserStorage() {
+  currentUser = null;
+  userLogado = false;
+  localStorage.removeItem(STORAGE_USER_KEY);
 }
