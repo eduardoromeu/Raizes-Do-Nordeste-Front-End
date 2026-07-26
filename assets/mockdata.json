@@ -52,13 +52,27 @@
   "produtos": [
     {
       "id": 0,
-      "titulo": "titulo do produto",
-      "descricao": "descricao do produto",
-      "imagem": "./assets/cup404.svg",
-      "preco": 0.99,
+      "titulo": "Tapioca com Carne de Sol",
+      "descricao": "Tapioca com Carne de Sol",
+      "imagem": "./assets/imagens-produtos/tapioca-carne.jpg",
+      "preco": 14.99,
       "categorias": [
-        "categoria1",
-        "categoria2"
+        "Tapiocas",
+        "Salgados",
+        "Carne Bovina"
+      ]
+    },
+    {
+      "id": 1,
+      "titulo": "Tapioca Morangolate",
+      "descricao": "Tapioca de Chocolate com pedaços de morango",
+      "imagem": "./assets/imagens-produtos/tapioca-morangolate.jpg",
+      "preco": 12.00,
+      "categorias": [
+        "Tapiocas",
+        "Doces",
+        "Chocolate",
+        "Morango"
       ]
     }
   ]

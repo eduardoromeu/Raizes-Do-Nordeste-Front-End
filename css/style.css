@@ -5,3 +5,12 @@
 .nav-placeholder {
   width: 40px;
 }
+
+.card-produto {
+  max-width: 512px;
+
+}
+
+.container-img-produto {
+  overflow: hidden;
+}
