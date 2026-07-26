@@ -420,4 +420,87 @@ function checkUserStartPage() {
   }
 }
 
+async function carregarUnidades() {
+  const container = document.getElementById("container-unidades");
+  if (!container) return; // página não está presente no DOM
+
+  try {
+    const [dataResp, compResp] = await Promise.all([
+      fetch("./assets/mockdata.json"),
+      fetch("./components/card-unidade.html")
+    ]);
+
+    if (!dataResp.ok) throw new Error(`Falha ao carregar mockdata: ${dataResp.status}`);
+    if (!compResp.ok) throw new Error(`Falha ao carregar componente card-unidade: ${compResp.status}`);
+
+    const data = await dataResp.json();
+    const compHtml = await compResp.text();
+
+    const temp = document.createElement("div");
+    temp.innerHTML = compHtml;
+    const template = temp.querySelector("template");
+    if (!template) throw new Error("Template do componente card-unidade não encontrado");
+
+    // procura a coluna dentro do template para clonar por unidade
+    const fragment = template.content.cloneNode(true);
+    const colTemplate = fragment.querySelector('.col-12.col-md-4') || fragment.querySelector('.col-12');
+    if (!colTemplate) throw new Error('Estrutura esperada (coluna) não encontrada no template de card-unidade');
+
+    const row = document.createElement('div');
+    row.className = 'row g-4 h-100';
+
+    (data.unidades || []).forEach((u) => {
+      const col = colTemplate.cloneNode(true);
+
+      // ajustar link
+      const link = col.querySelector('#link-unidade') || col.querySelector('a');
+      if (link) {
+        // remover id duplicado
+        link.removeAttribute('id');
+        // usar id numérico como selecionado
+        link.setAttribute('onclick', `selecionarUnidade(${u.id})`);
+        link.setAttribute('href', 'cardapio.html');
+        link.dataset.route = '/cardapio';
+      }
+
+      // imagem
+      const img = col.querySelector('#imagem-unidade');
+      if (img) {
+        img.removeAttribute('id');
+        // se existir imagem no objeto, usa; senão mantém a padrão do template
+        if (u.imagem) img.src = u.imagem;
+        img.alt = `Unidade ${u.nome}`;
+      }
+
+      // nome
+      const nomeEl = col.querySelector('#nome-unidade');
+      if (nomeEl) {
+        nomeEl.removeAttribute('id');
+        nomeEl.textContent = u.nome || '';
+      }
+
+      // endereco
+      const endEl = col.querySelector('#endereco-unidade');
+      if (endEl) {
+        endEl.removeAttribute('id');
+        endEl.textContent = u.endereco || '';
+      }
+
+      // salvar id como atributo data-id (útil para debugging)
+      col.dataset.unidadeId = u.id;
+
+      row.appendChild(col);
+    });
+
+    container.innerHTML = '';
+    container.appendChild(row);
+
+  } catch (error) {
+    console.error('Erro ao carregar unidades:', error);
+  }
+}
+
+// Tenta carregar unidades imediatamente (se a página unidades estiver carregada)
+carregarUnidades();
+
 loadAppState();

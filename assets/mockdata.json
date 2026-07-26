@@ -18,9 +18,32 @@
   "unidades": [
     {
       "id": 0,
+      "nome": "Matriz",
+      "endereco": "R. Tal, n. 12",
+      "imagem": "https://free-images.com/md/9b0e/restaurant_gastronomy_koblenz_human.jpg",
       "cardapio": [
         0,
         1,
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1,
+      "nome": "Praia",
+      "endereco": "R. Orla, n. 589",
+      "imagem": "https://free-images.com/md/9865/ponferrada_calle_gil_y_0.jpg",
+      "cardapio": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Bairro",
+      "endereco": "R. Viela, n. 76",
+      "imagem": "https://free-images.com/md/4dc8/restaurant_seats_table_chairs.jpg",
+      "cardapio": [
         2,
         5
       ]
@@ -31,6 +54,7 @@
       "id": 0,
       "titulo": "titulo do produto",
       "descricao": "descricao do produto",
+      "imagem": "./assets/cup404.svg",
       "preco": 0.99,
       "categorias": [
         "categoria1",

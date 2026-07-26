@@ -1,7 +1,8 @@
 <template>
   <nav class="navbar bg-light shadow-sm">
     <div class="container-fluid p-0 d-flex justify-content-between">
-      <btn data-route="/unidades" class="btn btn-sm btn-outline-secondary" aria-label="Voltar para unidades">
+      <btn data-route="/unidades" class="btn btn-sm btn-outline-secondary" aria-label="Voltar para unidades"
+        onclick="clearUnidadeStorage()">
         <i class="bi bi-chevron-left me-2" aria-hidden="true"></i>Voltar
       </btn>
       <div class="text-center fw-bold text-capitalize flex-grow-1">
@@ -23,7 +24,5 @@
         aria-describedby="text-pesquisa-cardapio">
     </div>
   </div>
-
-
 
 </template>

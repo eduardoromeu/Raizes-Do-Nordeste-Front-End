@@ -20,7 +20,8 @@ const routes = {
     title: "Raízes do Nordeste - Unidades",
     showNavbar: true,
     requerLogin: true,
-    requerUnidade: false
+    requerUnidade: false,
+    onLoad: () => carregarUnidades()
   },
   "/notfound": {
     page: "./pages/notfound.html",
