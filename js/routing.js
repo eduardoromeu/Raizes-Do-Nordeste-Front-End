@@ -87,7 +87,8 @@ const routes = {
     title: "Pagamento",
     showNavbar: false,
     requerLogin: true,
-    requerUnidade: true
+    requerUnidade: true,
+    onLoad: () => carregarPagamento()
   },
   "/pedido": {
     page: "pedido",
