@@ -25,13 +25,8 @@ async function loadCardapio() {
       return;
     }
 
-    // carrega modal do produto uma vez
-    if (!document.getElementById('modal-produto')) {
-      const modalTemplate = await loadTemplate('./components/modal-produto.html');
-      if (modalTemplate) {
-        document.body.appendChild(modalTemplate.cloneNode(true));
-      }
-    }
+    // carrega modal do produto
+    replaceComponent("modal-produto", "./components/modal-produto.html")
 
     container.innerHTML = '';
     const row = document.createElement('div');
@@ -45,7 +40,7 @@ async function loadCardapio() {
       if (!produto) return; // ignora ids não existentes
 
       const fragment = template.cloneNode(true);
-      // o template raiz pode ser a própria card; procura elementos dentro do fragment
+      // raiz do card
       const card = fragment.querySelector('.card') || fragment.firstElementChild;
       if (!card) return;
 

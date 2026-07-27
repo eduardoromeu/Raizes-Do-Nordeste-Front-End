@@ -25,7 +25,22 @@
         0,
         1,
         2,
-        5
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
       ]
     },
     {
@@ -73,6 +88,219 @@
         "Doces",
         "Chocolate",
         "Morango"
+      ]
+    },
+    {
+      "id": 2,
+      "titulo": "Tapioca Frango com Catupiry",
+      "descricao": "Tapioca recheada com frango desfiado e catupiry",
+      "imagem": "",
+      "preco": 13.99,
+      "categorias": [
+        "Tapiocas",
+        "Salgados",
+        "Frango"
+      ]
+    },
+    {
+      "id": 3,
+      "titulo": "Tapioca Queijo Coalho",
+      "descricao": "Tapioca recheada com queijo coalho grelhado",
+      "imagem": "",
+      "preco": 11.99,
+      "categorias": [
+        "Tapiocas",
+        "Salgados",
+        "Queijos"
+      ]
+    },
+    {
+      "id": 4,
+      "titulo": "Cuscuz Nordestino Completo",
+      "descricao": "Cuscuz com ovos, queijo coalho e carne de sol",
+      "imagem": "",
+      "preco": 18.99,
+      "categorias": [
+        "Cuscuz",
+        "Pratos",
+        "Carne Bovina"
+      ]
+    },
+    {
+      "id": 5,
+      "titulo": "Cuscuz com Frango",
+      "descricao": "Cuscuz tradicional acompanhado de frango desfiado",
+      "imagem": "",
+      "preco": 16.99,
+      "categorias": [
+        "Cuscuz",
+        "Pratos",
+        "Frango"
+      ]
+    },
+    {
+      "id": 6,
+      "titulo": "Escondidinho de Carne de Sol",
+      "descricao": "Purê de mandioca gratinado com recheio de carne de sol",
+      "imagem": "",
+      "preco": 24.99,
+      "categorias": [
+        "Pratos",
+        "Carne Bovina"
+      ]
+    },
+    {
+      "id": 7,
+      "titulo": "Escondidinho de Frango",
+      "descricao": "Purê de mandioca gratinado com recheio de frango",
+      "imagem": "",
+      "preco": 22.99,
+      "categorias": [
+        "Pratos",
+        "Frango"
+      ]
+    },
+    {
+      "id": 8,
+      "titulo": "Baião de Dois",
+      "descricao": "Arroz e feijão de corda com queijo coalho e carne seca",
+      "imagem": "",
+      "preco": 26.99,
+      "categorias": [
+        "Pratos",
+        "Carne Bovina"
+      ]
+    },
+    {
+      "id": 9,
+      "titulo": "Macaxeira Frita",
+      "descricao": "Porção de macaxeira frita crocante",
+      "imagem": "",
+      "preco": 12.99,
+      "categorias": [
+        "Acompanhamentos",
+        "Vegetariano"
+      ]
+    },
+    {
+      "id": 10,
+      "titulo": "Queijo Coalho na Brasa",
+      "descricao": "Espetinhos de queijo coalho grelhado",
+      "imagem": "",
+      "preco": 9.99,
+      "categorias": [
+        "Acompanhamentos",
+        "Queijos",
+        "Vegetariano"
+      ]
+    },
+    {
+      "id": 11,
+      "titulo": "Pastel de Carne de Sol",
+      "descricao": "Pastel crocante recheado com carne de sol e queijo",
+      "imagem": "",
+      "preco": 10.99,
+      "categorias": [
+        "Salgados",
+        "Carne Bovina"
+      ]
+    },
+    {
+      "id": 12,
+      "titulo": "Pastel de Queijo Coalho",
+      "descricao": "Pastel recheado com queijo coalho derretido",
+      "imagem": "",
+      "preco": 9.99,
+      "categorias": [
+        "Salgados",
+        "Queijos",
+        "Vegetariano"
+      ]
+    },
+    {
+      "id": 13,
+      "titulo": "Cartola",
+      "descricao": "Banana frita com queijo, canela e açúcar",
+      "imagem": "",
+      "preco": 11.99,
+      "categorias": [
+        "Sobremesas",
+        "Banana"
+      ]
+    },
+    {
+      "id": 14,
+      "titulo": "Pudim de Tapioca",
+      "descricao": "Sobremesa cremosa preparada com tapioca granulada",
+      "imagem": "",
+      "preco": 9.99,
+      "categorias": [
+        "Sobremesas",
+        "Tapiocas"
+      ]
+    },
+    {
+      "id": 15,
+      "titulo": "Cocada Cremosa",
+      "descricao": "Doce tradicional de coco servido gelado",
+      "imagem": "",
+      "preco": 8.99,
+      "categorias": [
+        "Sobremesas",
+        "Coco"
+      ]
+    },
+    {
+      "id": 16,
+      "titulo": "Suco de Cajá",
+      "descricao": "Suco natural de cajá",
+      "imagem": "",
+      "preco": 7.99,
+      "categorias": [
+        "Bebidas",
+        "Sucos"
+      ]
+    },
+    {
+      "id": 17,
+      "titulo": "Suco de Umbu",
+      "descricao": "Suco natural de umbu",
+      "imagem": "",
+      "preco": 7.99,
+      "categorias": [
+        "Bebidas",
+        "Sucos"
+      ]
+    },
+    {
+      "id": 18,
+      "titulo": "Suco de Graviola",
+      "descricao": "Suco natural de graviola",
+      "imagem": "",
+      "preco": 8.99,
+      "categorias": [
+        "Bebidas",
+        "Sucos"
+      ]
+    },
+    {
+      "id": 19,
+      "titulo": "Água de Coco",
+      "descricao": "Água de coco gelada",
+      "imagem": "",
+      "preco": 6.99,
+      "categorias": [
+        "Bebidas"
+      ]
+    },
+    {
+      "id": 20,
+      "titulo": "Refrigerante Lata",
+      "descricao": "Refrigerante 350ml",
+      "imagem": "",
+      "preco": 5.99,
+      "categorias": [
+        "Bebidas"
       ]
     }
   ]

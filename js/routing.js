@@ -82,6 +82,13 @@ const routes = {
     requerUnidade: false,
     onLoad: () => carregarCarrinho()
   },
+  "/pagamento": {
+    page: "pagamento",
+    title: "Pagamento",
+    showNavbar: false,
+    requerLogin: true,
+    requerUnidade: true
+  },
   "/pedido": {
     page: "pedido",
     title: "Pedido",
