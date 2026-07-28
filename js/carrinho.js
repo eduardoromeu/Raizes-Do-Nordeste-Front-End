@@ -11,6 +11,11 @@ function loadCartFromStorage() {
   }
 }
 
+function limparCarrinho() {
+  const clearCart = [];
+  saveCartToStorage(clearCart);
+}
+
 function saveCartToStorage(cart) {
   try {
     localStorage.setItem(STORAGE_CART_KEY, JSON.stringify(cart));

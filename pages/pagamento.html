@@ -69,7 +69,7 @@
         </div>
 
         <div class="card-footer bg-white border-0 pb-4">
-          <button id="payment-confirm-btn" class="btn btn-primary btn-lg w-100">
+          <button id="payment-confirm-btn" class="btn btn-primary btn-lg w-100" onclick="pagamentoRealizado()">
             <i class="bi bi-check-circle-fill me-2"></i>
             Já realizei o pagamento
           </button>
@@ -129,7 +129,7 @@
         </div>
 
         <div class="card-footer bg-white border-0 pb-4">
-          <button id="payment-confirm-btn" class="btn btn-primary btn-lg w-100">
+          <button id="payment-confirm-btn" class="btn btn-primary btn-lg w-100" onclick="pagamentoRealizado()">
             <i class="bi bi-check-circle-fill me-2"></i>
             Já realizei o pagamento
           </button>
@@ -138,6 +138,11 @@
 
     </div>
   </div>
+
+  <div class="w-100 d-flex flex-column flex-grow-1 justify-content-center align-items-center my-4 d-none"
+    id="pagamento-recusado">
+    <h1 class="mb-3">Pagamento Recusado</h1>
+    <button data-route="/carrinho" class="btn btn-primary">Tentar Novamente</button>
 
   </div>
 </template>

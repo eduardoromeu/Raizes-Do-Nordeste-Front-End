@@ -151,3 +151,46 @@ async function getValorPagamento() {
   console.log(`valor total pagamento: ${total}`);
   return total;
 }
+
+function pagamentoRealizado() {
+  const divSpinner = document.querySelector("#spinner-carregamento");
+  const containerPagamento = document.querySelector("#container-pagamento");
+
+  if (divSpinner) {
+    divSpinner.classList.remove("d-none");
+    divSpinner.classList.add("d-flex");
+  }
+
+  if (containerPagamento) {
+    containerPagamento.classList.add("d-none");
+  }
+
+  setTimeout(() => {
+    tentarPagamento();
+  }, 800);
+
+  function tentarPagamento() {
+
+    if (divSpinner) {
+      divSpinner.classList.remove("d-flex");
+      divSpinner.classList.add("d-none");
+    }
+
+    const pagamentoBemSucedido = Math.random() >= 0.2;
+
+    if (pagamentoBemSucedido) {
+      navigate('/statuspedido');
+      limparCarrinho();
+      return;
+    }
+
+    pagamentoRecusado();
+  }
+
+}
+
+function pagamentoRecusado() {
+  const divRecusado = document.querySelector("#pagamento-recusado");
+
+  if (divRecusado) divRecusado.classList.remove("d-none");
+}
