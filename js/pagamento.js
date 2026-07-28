@@ -148,7 +148,7 @@ async function getValorPagamento() {
 
   if (idPedidoText) {
     idPedidoText.forEach(txt => {
-      txt.textContent = id_pedido.toString().padStart(4, '0');;
+      txt.textContent = id_pedido.toString().padStart(4, '0');
     });
   }
 
