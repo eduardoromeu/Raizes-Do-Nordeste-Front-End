@@ -184,7 +184,7 @@ function pagamentoRealizado() {
     if (pagamentoBemSucedido) {
       const id_pedido = getRouteParams().get("id_pedido");
       setOrderStatus(id_pedido, "Em preparo");
-      navigate('/statuspedido');
+      navigate('/statuspedido', { "id_pedido": id_pedido });
       limparCarrinho();
       return;
     }
