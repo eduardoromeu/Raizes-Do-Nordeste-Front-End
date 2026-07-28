@@ -1,23 +1,50 @@
 <template>
-  <div class="container py-4 d-flex flex-column flex-grow-1">
-    <h1 class="fw-bold mb-3 pb-2 border-bottom">Pagamento</h1>
-  </div>
 
-  <div class="w-100 d-flex justify-content-center my-4 d-none">
-    <div class="spinner-border text-secondary" role="status">
+  <div class="w-100 d-flex flex-grow-1 justify-content-center align-items-center my-4 d-none" id="spinner-carregamento">
+    <div class="spinner-border text-primary" role="status">
       <span class="visually-hidden">Carregando Pagamento...</span>
     </div>
   </div>
 
-  <div class="row flex-grow-1 justify-content-center align-items-center">
+  <div class="row flex-grow-1 justify-content-center align-items-center" id="container-pagamento">
     <div class="col-12 col-md-8 col-lg-6">
 
-      <div class="card shadow-sm text-center">
-        <div class="card-body p-4">
+      <div class="card shadow-sm text-center" id="forma-pagamento">
+        <div class="card-body">
+          <h4 class="card-title mb-3">
+            Selecione a forma de pagamento desejada
+          </h4>
 
-          <h5 class="card-title mb-3">
+          <div class="d-flex flex-column align-items-stretch">
+            <button class="btn btn-outline-primary mb-3 d-flex justify-content-center align-items-center"
+              onclick="setPagamentoPix()">
+              <svg fill="currentColor" width="16" height="16" viewBox="0 0 16 16" class="bi me-1"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11.917 11.71a2.046 2.046 0 0 1-1.454-.602l-2.1-2.1a.4.4 0 0 0-.551 0l-2.108 2.108a2.044 2.044 0 0 1-1.454.602h-.414l2.66 2.66c.83.83 2.177.83 3.007 0l2.667-2.668h-.253zM4.25 4.282c.55 0 1.066.214 1.454.602l2.108 2.108a.39.39 0 0 0 .552 0l2.1-2.1a2.044 2.044 0 0 1 1.453-.602h.253L9.503 1.623a2.127 2.127 0 0 0-3.007 0l-2.66 2.66h.414z" />
+                <path
+                  d="m14.377 6.496-1.612-1.612a.307.307 0 0 1-.114.023h-.733c-.379 0-.75.154-1.017.422l-2.1 2.1a1.005 1.005 0 0 1-1.425 0L5.268 5.32a1.448 1.448 0 0 0-1.018-.422h-.9a.306.306 0 0 1-.109-.021L1.623 6.496c-.83.83-.83 2.177 0 3.008l1.618 1.618a.305.305 0 0 1 .108-.022h.901c.38 0 .75-.153 1.018-.421L7.375 8.57a1.034 1.034 0 0 1 1.426 0l2.1 2.1c.267.268.638.421 1.017.421h.733c.04 0 .079.01.114.024l1.612-1.612c.83-.83.83-2.178 0-3.008z" />
+              </svg>
+              Pix
+            </button>
+            <button class="btn btn-outline-primary mb-3" onclick="setPagamentoCartao()">
+              <i class="bi bi-credit-card me-1"></i>
+              Cartão de Débito
+            </button>
+            <button class="btn btn-outline-primary mb-3" onclick="setPagamentoCartao()">
+              <i class="bi bi-credit-card-fill me-1"></i>
+              Cartão de Crédito
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card shadow-sm text-center" id="card-pix">
+        <div class="card-body">
+          <h4 class="card-title mb-3">
             Pagamento via PIX
-          </h5>
+          </h4>
 
           <p class="text-muted mb-4">
             Escaneie o QR Code abaixo para concluir seu pedido.
@@ -31,15 +58,14 @@
               Valor a pagar
             </div>
 
-            <div id="payment-amount" class="fs-2 fw-bold text-primary">
-              R$ 47,90
+            <div class="fs-2 fw-bold text-primary valor-pagamento">
+              R$ yy,yy
             </div>
           </div>
 
           <div class="alert alert-info mt-4 mb-0">
             Após realizar o pagamento, clique no botão abaixo para prosseguir.
           </div>
-
         </div>
 
         <div class="card-footer bg-white border-0 pb-4">
@@ -48,7 +74,66 @@
             Já realizei o pagamento
           </button>
         </div>
+      </div>
 
+      <div class="card shadow-sm text-center" id="card-cartao">
+        <div class="card-body">
+          <h4 class="card-title mb-3">
+            Pagamento por cartão
+          </h4>
+
+          <p class="text-muted mb-4" id="info-card-totem">
+            Aproxime ou insira seu cartão na máquina ao lado.
+          </p>
+
+          <div id="drop-cartao-webapp">
+            <p class="text-muted mb-4" id="info-card-app">
+              Selecione com qual cartão deseja realizar o pagamento.
+            </p>
+
+            <div class="dropdown d-grid gap-2">
+              <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Cartão Padrão
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <button class="btn btn-sm me-1">
+                    <i class="bi bi-credit-card-fill me-1"></i>
+                    Cartão padrão
+                  </button>
+                </li>
+                <li>
+                  <button class="btn btn-sm">
+                    <i class="bi bi-plus-circle me-1"></i>
+                    Adicionar meio de pagamento
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <div class="small text-muted">
+              Valor a pagar
+            </div>
+
+            <div class="fs-2 fw-bold text-primary valor-pagamento">
+              R$ xx,xx
+            </div>
+          </div>
+
+          <div class="alert alert-info mt-4 mb-0">
+            Após realizar o pagamento, clique no botão abaixo para prosseguir.
+          </div>
+        </div>
+
+        <div class="card-footer bg-white border-0 pb-4">
+          <button id="payment-confirm-btn" class="btn btn-primary btn-lg w-100">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            Já realizei o pagamento
+          </button>
+        </div>
       </div>
 
     </div>

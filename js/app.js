@@ -1,5 +1,6 @@
 const STORAGE_USER_KEY = "raizes_nordeste_usuario";
 const STORAGE_UNIDADE_KEY = "raizes_nordeste_unidade";
+const STORAGE_DEVICE_KEY = "raizes_nordeste_dispositivo";
 
 let userLogado = false;
 let currentUser = null;
@@ -315,6 +316,24 @@ function updateNavbar() {
       pageContainer?.classList.remove("navPadding");
     }
   }
+}
+
+// retorna se é totem ou app/web
+function getTipoDispositivo() {
+  const storedDevice = localStorage.getItem(STORAGE_DEVICE_KEY);
+  if (storedDevice && storedDevice == 'totem' || storedDevice == 'webapp') {
+    return storedDevice;
+  }
+  return 'webapp';
+}
+
+// define tipo de dispositivo do app
+function setTipoDispositivo(device) {
+  if (device && device == 'totem' || device == 'webapp') {
+    localStorage.setItem(STORAGE_DEVICE_KEY, device);
+    return;
+  }
+  console.error("Tipo de dispositivo inválido");
 }
 
 loadAppState();

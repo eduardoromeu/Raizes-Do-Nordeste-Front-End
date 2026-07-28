@@ -12,9 +12,13 @@
 
 .card-produto {
   max-width: 512px;
-
 }
 
 .container-img-produto {
   overflow: hidden;
+}
+
+#spinner-carregamento .spinner-border {
+  width: 4rem;
+  height: 4rem;
 }
