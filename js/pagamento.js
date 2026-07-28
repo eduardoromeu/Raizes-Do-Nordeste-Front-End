@@ -184,8 +184,14 @@ function pagamentoRealizado() {
     if (pagamentoBemSucedido) {
       const id_pedido = getRouteParams().get("id_pedido");
       setOrderStatus(id_pedido, "Em preparo");
-      navigate('/statuspedido', { "id_pedido": id_pedido });
       limparCarrinho();
+
+      const contInfoPag = document.querySelector("#pagamento-aceito");
+      if (contInfoPag) {
+        contInfoPag.classList.remove("d-none");
+        loadComponent("pagamento-aceito", "./components/card-pag-confirm.html");
+      }
+      else navigate('/statuspedido', { "id_pedido": id_pedido });
       return;
     }
 
@@ -194,8 +200,27 @@ function pagamentoRealizado() {
 
 }
 
+function acompanharPedido() {
+  const id_pedido = getRouteParams().get("id_pedido");
+  navigate('/statuspedido', { "id_pedido": id_pedido });
+}
+
 function pagamentoRecusado() {
   const divRecusado = document.querySelector("#pagamento-recusado");
 
   if (divRecusado) divRecusado.classList.remove("d-none");
+}
+
+function retryPagamento() {
+  const divRecusado = document.querySelector("#pagamento-recusado");
+  const containerPagamento = document.querySelector("#container-pagamento");
+  const divFormaPagamento = document.querySelector("#forma-pagamento");
+  const cardPix = document.querySelector("#card-pix");
+  const cardCartao = document.querySelector("#card-cartao");
+
+  if (divRecusado) divRecusado.classList.add("d-none")
+  if (containerPagamento) containerPagamento.classList.remove("d-none");
+  if (divFormaPagamento) divFormaPagamento.classList.remove("d-none");
+  if (cardPix) cardPix.classList.add("d-none");
+  if (cardCartao) cardCartao.classList.add("d-none");
 }

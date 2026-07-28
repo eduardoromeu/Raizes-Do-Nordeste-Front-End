@@ -147,10 +147,22 @@
     </div>
   </div>
 
-  <div class="w-100 d-flex flex-column flex-grow-1 justify-content-center align-items-center my-4 d-none"
+  <div class="w-100 d-flex flex-column flex-grow-1 justify-content-center align-items-center my-4 text-center d-none"
     id="pagamento-recusado">
-    <h1 class="mb-3">Pagamento Recusado</h1>
-    <button data-route="/carrinho" class="btn btn-primary">Tentar Novamente</button>
+    <i class="bi bi-x-circle-fill text-danger fs-1"></i>
+    <h1 class="mb-3 mt-3">Falha no pagamento</h1>
+    <p class="text-muted mb-4 text-center">
+      Houve um problema ao processar seu pagamento, clique abaixo para tentar novamente.
+    </p>
+    <button onclick="retryPagamento()" class="btn btn-primary">Tentar Novamente</button>
+    <p class="text-muted mt-3 text-center">
+      Nenhuma cobranca foi efetuada.
+    </p>
+  </div>
+
+  <div class="w-100 d-flex flex-column flex-grow-1 justify-content-center align-items-center my-4 text-center d-none"
+    id="pagamento-aceito">
 
   </div>
+
 </template>

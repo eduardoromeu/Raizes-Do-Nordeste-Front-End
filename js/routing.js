@@ -95,7 +95,8 @@ const routes = {
     title: "Pedido",
     showNavbar: true,
     requerLogin: true,
-    requerUnidade: true
+    requerUnidade: true,
+    onLoad: () => carregarPaginaPedido()
   },
   "/historicopedidos": {
     page: "historicopedidos",
