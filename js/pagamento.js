@@ -136,20 +136,23 @@ function setPagamentoCartao() {
 }
 
 async function getValorPagamento() {
-  const cart = loadCartFromStorage();
-  if (!cart) return 0;
 
-  const produtos = await getMockProdutos();
+  const id_pedido = getRouteParams().get("id_pedido");
+  const pedido = getOrderFromId(id_pedido);
+  if (!pedido) return 0;
 
-  let total = 0;
-  cart.forEach((item) => {
-    const produto = produtos.find((p) => Number(p.id) === Number(item.produtoId));
-    if (!produto) return; // pula itens inválidos
+  const valorPagamento = getValorCarrinho(pedido.cart);
 
-    total += Number(produto.preco || 0) * Number(item.quantidade || 0);
-  });
-  console.log(`valor total pagamento: ${total}`);
-  return total;
+  // texto id do pedido
+  const idPedidoText = document.querySelectorAll(".id-pedido");
+
+  if (idPedidoText) {
+    idPedidoText.forEach(txt => {
+      txt.textContent = id_pedido.toString().padStart(4, '0');;
+    });
+  }
+
+  return valorPagamento;
 }
 
 function pagamentoRealizado() {
@@ -179,6 +182,8 @@ function pagamentoRealizado() {
     const pagamentoBemSucedido = Math.random() >= 0.2;
 
     if (pagamentoBemSucedido) {
+      const id_pedido = getRouteParams().get("id_pedido");
+      setOrderStatus(id_pedido, "Em preparo");
       navigate('/statuspedido');
       limparCarrinho();
       return;

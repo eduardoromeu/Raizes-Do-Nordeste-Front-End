@@ -1,4 +1,5 @@
 const STORAGE_CART_KEY = 'raizes_nordeste_carrinho';
+const STORAGE_ORDERS_KEY = 'raizes_nordeste_pedidos';
 
 function loadCartFromStorage() {
   const raw = localStorage.getItem(STORAGE_CART_KEY);
@@ -16,12 +17,84 @@ function limparCarrinho() {
   saveCartToStorage(clearCart);
 }
 
+async function getValorCarrinho(cart) {
+  if (!cart) return 0;
+
+  const produtos = await getMockProdutos();
+
+  let total = 0;
+  cart.forEach((item) => {
+    const produto = produtos.find((p) => Number(p.id) === Number(item.produtoId));
+    if (!produto) return; // pula itens inválidos
+
+    total += Number(produto.preco || 0) * Number(item.quantidade || 0);
+  });
+
+  return total;
+}
+
 function saveCartToStorage(cart) {
   try {
     localStorage.setItem(STORAGE_CART_KEY, JSON.stringify(cart));
   } catch (e) {
     console.error('Falha ao salvar carrinho no localStorage', e);
   }
+}
+
+function loadOrdersFromStorage() {
+  const raw = localStorage.getItem(STORAGE_ORDERS_KEY);
+  if (!raw) return [];
+  try {
+    return JSON.parse(raw);
+  } catch (e) {
+    console.error('Falha ao ler ordens do localStorage', e);
+    return [];
+  }
+}
+
+function saveCartAsOrder(status = "Recebido") {
+  const cart = loadCartFromStorage();
+  const stored_orders = loadOrdersFromStorage();
+
+  const new_order = {};
+  new_order.id = stored_orders.length;
+  new_order.cart = cart;
+  new_order.status = status;
+  new_order.timestamp = Date.now();
+
+  stored_orders.push(new_order);
+  localStorage.setItem(STORAGE_ORDERS_KEY, JSON.stringify(stored_orders));
+  console.log(`criado ordem ${new_order}`);
+  return new_order.id; // retorna id da ordem para o pagamento
+}
+
+function saveOrderToStorage(orderToSave) {
+  const stored_orders = loadOrdersFromStorage();
+  const order_to_overwrite = stored_orders.find((order) => Number(order.id) === Number(orderToSave.id));
+  if (!order_to_overwrite) return;
+  stored_orders[order_to_overwrite] = orderToSave;
+
+  try {
+    localStorage.setItem(STORAGE_ORDERS_KEY, JSON.stringify(stored_orders));
+  } catch (e) {
+    console.error('Falha ao salvar ordens no localStorage', e);
+  }
+}
+
+function getOrderFromId(order_id) {
+  const stored_orders = loadOrdersFromStorage();
+  return stored_orders.find((order) => Number(order.id) === Number(order_id));
+}
+
+function setOrderStatus(order_id, status) {
+  const order = getOrderFromId(order_id);
+  order.status = status;
+  saveOrderToStorage(order);
+}
+
+function limparOrdens() {
+  const empty_orders = {};
+  localStorage.setItem(STORAGE_ORDERS_KEY, JSON.stringify(empty_orders));
 }
 
 function formatPrice(value) {
@@ -249,11 +322,18 @@ async function abrirModalPedido() {
   confirmBtn.onclick = () => {
     const modal = window.bootstrap?.Modal?.getOrCreateInstance(modalEl);
     modal?.hide();
-    navigate('/pagamento');
-  };
+    enviarPedido();
+  }
 
   const modal = window.bootstrap?.Modal?.getOrCreateInstance(modalEl);
   modal?.show();
+}
+
+function enviarPedido() {
+
+  const id_pedido = saveCartAsOrder();
+  limparCarrinho(); // limpar carrinho e faz pagamento pela ordem
+  navigate('/pagamento', { "id_pedido": id_pedido });
 }
 
 async function carregarCarrinho() {

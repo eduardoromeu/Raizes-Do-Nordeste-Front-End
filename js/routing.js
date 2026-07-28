@@ -131,16 +131,28 @@ const routes = {
 let currentPage = routes['/'];
 
 // navega para uma rota
-async function navigate(path) {
-  location.hash = path;
+async function navigate(path, params = {}) {
+  const queryString = new URLSearchParams(
+    params
+  ).toString();
+
+  location.hash =
+    queryString
+      ? `${path}?${queryString}`
+      : path;
+}
+
+function getCurrentPath() {
+  const hash = location.hash.slice(1);
+  return hash.split("?")[0] || "/";
 }
 
 // renderiza a página da rota
 async function renderRoute() {
 
-  const path = location.hash.replace("#", "") || "/";
-  let route = routes[path] || routes["/notfound"];
+  const path = getCurrentPath();
 
+  let route = routes[path] || routes["/notfound"];
 
   if (route.requerLogin && !userLogado) {
     navigate("/login");
@@ -170,6 +182,17 @@ async function renderRoute() {
     updateUserInterface();
   }
 }
+
+function getRouteParams() {
+
+  const hash = location.hash.slice(1);
+  const queryString = hash.split("?")[1] || "";
+
+  return new URLSearchParams(
+    queryString
+  );
+}
+
 
 // renderiza a rota atual ao carregar a página
 window.addEventListener(

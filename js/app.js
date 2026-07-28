@@ -191,6 +191,8 @@ async function logIn(event) {
 function logOut() {
   clearUserStorage();
   clearUnidadeStorage();
+  limparCarrinho();
+  limparOrdens();
   navigate("/");
 }
 
