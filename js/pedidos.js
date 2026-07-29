@@ -78,5 +78,8 @@ async function carregarPaginaPedido() {
       contItensPedido.appendChild(itemEl);
     });
   }
+}
+
+async function carregarHistoricoPedidos() {
 
 }

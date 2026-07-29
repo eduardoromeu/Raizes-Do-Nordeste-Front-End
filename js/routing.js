@@ -103,7 +103,8 @@ const routes = {
     title: "Histórico de Pedidos",
     showNavbar: true,
     requerLogin: true,
-    requerUnidade: true
+    requerUnidade: false,
+    onload: () => carregarHistoricoPedidos()
   },
   "/recuperarsenha": {
     page: "recuperarsenha",
