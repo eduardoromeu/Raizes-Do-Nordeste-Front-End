@@ -104,7 +104,7 @@ const routes = {
     showNavbar: true,
     requerLogin: true,
     requerUnidade: false,
-    onload: () => carregarHistoricoPedidos()
+    onLoad: () => carregarHistoricoPedidos()
   },
   "/recuperarsenha": {
     page: "recuperarsenha",
