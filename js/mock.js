@@ -125,11 +125,6 @@ async function createMockUser(userData) {
     return null;
   }
 
-  const duplicateByName = await findUserByLogin(newUser.nome);
-  if (duplicateByName) {
-    return null;
-  }
-
   const registeredUsers = loadRegisteredUsers();
   registeredUsers.push(newUser);
   saveRegisteredUsers(registeredUsers);

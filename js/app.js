@@ -117,7 +117,7 @@ async function registerUser(event) {
     });
 
     if (!createdUser) {
-      showRegisterMessage("Já existe um usuário com esse nome ou e-mail.");
+      showRegisterMessage("Já existe um usuário cadastrado com este e-mail.");
       return false;
     }
 
@@ -293,6 +293,20 @@ function checkUserStartPage() {
 
 function updateNavbar() {
   const currentRoute = location.hash.replace("#", "") || "/";
+
+  const navBar = document.querySelector("#navbar");
+  const pageContainer = document.querySelector("#pageContainer");
+
+  if (currentPage && navBar) {
+    if (currentPage.showNavbar) {
+      navBar.classList.remove("d-none");
+      pageContainer?.classList.add("navPadding");
+    } else {
+      navBar.classList.add("d-none");
+      pageContainer?.classList.remove("navPadding");
+    }
+  }
+
   const links = document.querySelectorAll(".nav-link");
   links.forEach((link) => {
     const route = link.dataset.route;
@@ -307,17 +321,6 @@ function updateNavbar() {
     }
   });
 
-  const navBar = document.querySelector("#navbar");
-  const pageContainer = document.querySelector("#pageContainer");
-  if (currentPage && navBar) {
-    if (currentPage.showNavbar) {
-      navBar.classList.remove("d-none");
-      pageContainer?.classList.add("navPadding");
-    } else {
-      navBar.classList.add("d-none");
-      pageContainer?.classList.remove("navPadding");
-    }
-  }
 
   const cartQuantity = document.querySelector("#cart-quantity");
   if (cartQuantity) {
@@ -343,6 +346,14 @@ function setTipoDispositivo(device) {
   console.error("Tipo de dispositivo inválido");
 }
 
+function carregarModalPrivacidade() {
+  replaceComponent("modal-politica-privacidade", "./components/modal-politica-privacidade.html");
+}
+
 loadAppState();
 
 replaceComponent("navbar", "./components/navbar.html");
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateNavbar();
+});

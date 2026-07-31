@@ -42,7 +42,8 @@ const routes = {
     title: "Cadastro",
     showNavbar: false,
     requerLogin: false,
-    requerUnidade: false
+    requerUnidade: false,
+    onLoad: () => carregarModalPrivacidade()
   },
   "/perfil": {
     page: "./pages/perfil.html",
@@ -61,7 +62,7 @@ const routes = {
   },
   "/privacidade": {
     page: "privacidade",
-    title: "Configurações de privacidade",
+    title: "Privacidade e Dados",
     showNavbar: true,
     requerLogin: true,
     requerUnidade: false
