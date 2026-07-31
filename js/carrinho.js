@@ -176,10 +176,12 @@ async function renderCart() {
   // limpa container
   container.innerHTML = '';
 
+  // carrinho vazio
   if (!cart || cart.length === 0) {
     if (emptyEl) {
       emptyEl.classList.remove('d-none');
     }
+    container.classList.add("d-none");
     // Desativa footer quando carrinho está vazio
     if (footer) footer.classList.add('d-none');
     if (proceedBtn) {
@@ -190,6 +192,7 @@ async function renderCart() {
     return;
   } else {
     if (emptyEl) emptyEl.classList.add('d-none');
+    container.classList.remove("d-none");
   }
 
   const template = await loadTemplate('./components/produto-carrinho.html');
