@@ -15,6 +15,7 @@ function loadCartFromStorage() {
 function limparCarrinho() {
   const clearCart = [];
   saveCartToStorage(clearCart);
+  updateNavbar();
 }
 
 async function getValorCarrinho(cart) {
@@ -108,6 +109,18 @@ function findCartItem(cart, produtoId) {
   return cart.find((i) => Number(i.produtoId) === Number(produtoId));
 }
 
+function getCartQuantity() {
+  const cart = loadCartFromStorage();
+  if (!cart) return 0;
+
+  let total = 0;
+  cart.forEach((item) => {
+    if (item)
+      total += Number(item.quantidade);
+  });
+  return total;
+}
+
 function addToCart(produtoId, quantidade = 1) {
   const cart = loadCartFromStorage();
   const existing = findCartItem(cart, produtoId);
@@ -118,6 +131,7 @@ function addToCart(produtoId, quantidade = 1) {
   }
   saveCartToStorage(cart);
   renderCart();
+  updateNavbar();
 }
 
 function removeFromCart(produtoId) {
@@ -125,6 +139,7 @@ function removeFromCart(produtoId) {
   cart = cart.filter((i) => Number(i.produtoId) !== Number(produtoId));
   saveCartToStorage(cart);
   renderCart();
+  updateNavbar();
 }
 
 function updateCartQuantity(produtoId, quantidade) {
@@ -140,6 +155,7 @@ function updateCartQuantity(produtoId, quantidade) {
   }
   saveCartToStorage(cart);
   renderCart();
+  updateNavbar();
 }
 
 // Expor função globalmente

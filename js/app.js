@@ -318,6 +318,11 @@ function updateNavbar() {
       pageContainer?.classList.remove("navPadding");
     }
   }
+
+  const cartQuantity = document.querySelector("#cart-quantity");
+  if (cartQuantity) {
+    cartQuantity.textContent = `${getCartQuantity() || 0}`;
+  }
 }
 
 // retorna se é totem ou app/web

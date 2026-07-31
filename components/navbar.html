@@ -14,9 +14,13 @@
       </a>
 
       <a data-route="/carrinho" id="btn-nav-perfil"
-        class="nav-link text-secondary d-flex flex-column align-items-center">
+        class="nav-link text-secondary d-flex flex-column align-items-center position-relative">
         <i class="bi bi-cart-fill fs-4"></i>
         <small>Carrinho</small>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+          id="cart-quantity">
+          0
+        </span>
       </a>
 
       <a data-route="/historicopedidos" class="nav-link text-secondary d-flex flex-column align-items-center"
