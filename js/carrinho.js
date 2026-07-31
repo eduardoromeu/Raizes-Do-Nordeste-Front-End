@@ -42,8 +42,10 @@ function saveCartToStorage(cart) {
 }
 
 function loadOrdersFromStorage() {
+  // console.log("carregando ordens salvas");
   const raw = localStorage.getItem(STORAGE_ORDERS_KEY);
-  if (!raw) return [];
+  // console.log(raw);
+  if (!raw || raw == {}) return [];
   try {
     return JSON.parse(raw);
   } catch (e) {
@@ -55,11 +57,11 @@ function loadOrdersFromStorage() {
 function saveCartAsOrder(status = "Recebido") {
   const cart = loadCartFromStorage();
   const stored_orders = loadOrdersFromStorage();
-
+  // console.log(stored_orders);
   const new_order = {};
   new_order.id = stored_orders.length;
   new_order.cart = cart;
-  new_order.status = status;
+  new_order.status = "Aguardando Pagamento";
   new_order.timestamp = Date.now();
 
   stored_orders.push(new_order);
@@ -70,10 +72,9 @@ function saveCartAsOrder(status = "Recebido") {
 
 function saveOrderToStorage(orderToSave) {
   const stored_orders = loadOrdersFromStorage();
-  const order_to_overwrite = stored_orders.find((order) => Number(order.id) === Number(orderToSave.id));
-  if (!order_to_overwrite) return;
-  stored_orders[order_to_overwrite] = orderToSave;
-
+  const orderIndex = stored_orders.findIndex((order) => Number(order.id) === Number(orderToSave.id));
+  if (orderIndex === -1) return;
+  stored_orders[orderIndex] = orderToSave;
   try {
     localStorage.setItem(STORAGE_ORDERS_KEY, JSON.stringify(stored_orders));
   } catch (e) {
@@ -87,8 +88,10 @@ function getOrderFromId(order_id) {
 }
 
 function setOrderStatus(order_id, status) {
+  console.log(`atualizando status da ordem ${order_id} para ${status}`)
   const order = getOrderFromId(order_id);
   order.status = status;
+  // console.log(order);
   saveOrderToStorage(order);
 }
 

@@ -15,7 +15,18 @@ async function carregarPaginaPedido() {
 
   let bgColor = "text-bg-warning";
   let widthProgresso = 5;
+
   switch (pedido.status) {
+    case "Aguardando Pagamento":
+      bgColor = "text-bg-warning";
+      widthProgresso = 2;
+      const alertPagamento = document.querySelector("#alert-pagamento");
+      const btnPagamento = document.querySelector("#alert-pagamento > a");
+      if (alertPagamento && btnPagamento) {
+        alertPagamento.classList.remove("d-none");
+        btnPagamento.dataset.route = `/pagamento?id_pedido=${id_pedido}`;
+      }
+      break;
     case "Recebido":
       bgColor = "text-bg-warning";
       widthProgresso = 15;
@@ -37,6 +48,8 @@ async function carregarPaginaPedido() {
       widthProgresso = 100;
       break;
   }
+
+
 
   if (sliderProgresso)
     sliderProgresso.style.width = `${widthProgresso}%`

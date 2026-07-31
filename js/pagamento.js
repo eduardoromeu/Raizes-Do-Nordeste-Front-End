@@ -183,7 +183,7 @@ function pagamentoRealizado() {
 
     if (pagamentoBemSucedido) {
       const id_pedido = getRouteParams().get("id_pedido");
-      setOrderStatus(id_pedido, "Em preparo");
+      setOrderStatus(id_pedido, "Recebido");
       limparCarrinho();
 
       const contInfoPag = document.querySelector("#pagamento-aceito");
