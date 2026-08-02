@@ -1,9 +1,290 @@
 <template>
   <div class="container py-4">
-    <div class="d-flex align-items-center justify-content-between mb-3">
-      <h1 class="fw-bold m-0">Privacidade e Dados</h1>
+    <div class="d-flex flex-column align-items-center justify-content-between mb-3">
+      <h1 class="fw-bold">Privacidade e Dados</h1>
 
+      <p class="text-muted mb-4">
+        Última atualização: <strong>31 de julho de 2026</strong>
+      </p>
 
+      <div class="alert alert-info">
+        A Rede <strong>Raízes do Nordeste</strong> valoriza a privacidade de seus clientes e está comprometida com a
+        proteção dos dados pessoais tratados por meio desta plataforma, em conformidade com a Lei Geral de Proteção
+        de
+        Dados (LGPD – Lei nº 13.709/2018).
+      </div>
+
+      <div class="accordion" id="politicaPrivacidade">
+
+        <!-- Dados coletados -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button accordion-button collapsed" data-bs-toggle="collapse"
+              data-bs-target="#dados">
+              1. Dados coletados
+            </button>
+          </h2>
+
+          <div id="dados" class="accordion-collapse collapse " data-bs-parent="#politicaPrivacidade">
+
+            <div class="accordion-body">
+
+              <p>Para permitir a utilização da plataforma poderão ser coletados:</p>
+
+              <ul class="mb-0">
+                <li>Nome completo;</li>
+                <li>Endereço de e-mail;</li>
+                <li>Número de telefone;</li>
+                <li>Senha de acesso (armazenada de forma segura);</li>
+                <li>Unidade selecionada para retirada do pedido;</li>
+                <li>Histórico de pedidos;</li>
+                <li>Informações do programa de fidelidade.</li>
+              </ul>
+
+              <hr>
+
+              <p class="mb-0">
+                <strong>Importante:</strong> os dados do cartão de pagamento não são armazenados pela plataforma,
+                sendo
+                processados exclusivamente por um serviço de pagamento externo.
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Finalidade -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#finalidade">
+
+              2. Finalidade do tratamento dos dados
+
+            </button>
+          </h2>
+
+          <div id="finalidade" class="accordion-collapse collapse" data-bs-parent="#politicaPrivacidade">
+
+            <div class="accordion-body">
+
+              <ul class="mb-0">
+                <li>Identificar o usuário.</li>
+                <li>Permitir acesso à plataforma.</li>
+                <li>Processar pedidos.</li>
+                <li>Acompanhar o status do pedido.</li>
+                <li>Gerenciar o programa de fidelidade.</li>
+                <li>Oferecer promoções e benefícios.</li>
+                <li>Cumprir obrigações legais.</li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Compartilhamento -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#compartilhamento">
+
+              3. Compartilhamento de dados
+
+            </button>
+          </h2>
+
+          <div id="compartilhamento" class="accordion-collapse collapse" data-bs-parent="#politicaPrivacidade">
+
+            <div class="accordion-body">
+
+              <p>
+                Os dados poderão ser compartilhados apenas quando necessário para a prestação do serviço.
+              </p>
+
+              <ul>
+                <li>Serviços de pagamento.</li>
+                <li>Autoridades competentes quando houver obrigação legal.</li>
+              </ul>
+
+              <p class="mb-0">
+                A Rede Raízes do Nordeste <strong>não comercializa dados pessoais</strong>.
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Segurança -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#seguranca">
+
+              4. Armazenamento e segurança
+
+            </button>
+          </h2>
+
+          <div id="seguranca" class="accordion-collapse collapse" data-bs-parent="#politicaPrivacidade">
+
+            <div class="accordion-body">
+
+              <p>São adotadas medidas para proteger os dados pessoais, incluindo:</p>
+
+              <ul class="mb-0">
+                <li>Conexão segura (HTTPS).</li>
+                <li>Controle de acesso.</li>
+                <li>Autenticação de usuários.</li>
+                <li>Registro das operações realizadas.</li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Direitos -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#direitos">
+
+              5. Direitos do titular
+
+            </button>
+          </h2>
+
+          <div id="direitos" class="accordion-collapse collapse" data-bs-parent="#politicaPrivacidade">
+
+            <div class="accordion-body">
+
+              <p>O titular dos dados poderá solicitar:</p>
+
+              <ul class="mb-0">
+                <li>Confirmação do tratamento dos dados.</li>
+                <li>Acesso aos seus dados pessoais.</li>
+                <li>Correção de informações.</li>
+                <li>Exclusão dos dados, quando aplicável.</li>
+                <li>Revogação do consentimento.</li>
+                <li>Informações sobre compartilhamento.</li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Consentimento -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#consentimento">
+
+              6. Consentimento
+
+            </button>
+          </h2>
+
+          <div id="consentimento" class="accordion-collapse collapse" data-bs-parent="#politicaPrivacidade">
+
+            <div class="accordion-body">
+
+              <p>
+                Ao utilizar esta plataforma, o usuário declara estar ciente desta Política de Privacidade e autoriza
+                o
+                tratamento de seus dados pessoais para as finalidades aqui descritas.
+              </p>
+
+              <p class="mb-0">
+                O consentimento poderá ser alterado ou revogado a qualquer momento por meio da área
+                <strong>Privacidade e Dados</strong>.
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Cookies -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#cookies">
+
+              7. Cookies
+
+            </button>
+          </h2>
+
+          <div id="cookies" class="accordion-collapse collapse" data-bs-parent="#politicaPrivacidade">
+
+            <div class="accordion-body">
+
+              <p>A plataforma poderá utilizar cookies para:</p>
+
+              <ul class="mb-0">
+                <li>Manter a sessão autenticada.</li>
+                <li>Armazenar preferências.</li>
+                <li>Melhorar a experiência do usuário.</li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Alterações -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#alteracoes">
+
+              8. Alterações desta política
+
+            </button>
+          </h2>
+
+          <div id="alteracoes" class="accordion-collapse collapse" data-bs-parent="#politicaPrivacidade">
+
+            <div class="accordion-body">
+
+              <p class="mb-0">
+                Esta Política de Privacidade poderá ser atualizada sempre que necessário para atender alterações na
+                legislação ou nos serviços oferecidos. As alterações relevantes serão comunicadas aos usuários pela
+                própria plataforma.
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Contato -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#contato">
+
+              9. Contato
+
+            </button>
+          </h2>
+
+          <div id="contato" class="accordion-collapse collapse" data-bs-parent="#politicaPrivacidade">
+
+            <div class="accordion-body">
+
+              <p class="mb-0">
+                Em caso de dúvidas sobre esta Política de Privacidade ou sobre o tratamento dos dados pessoais,
+                entre em
+                contato pelos canais oficiais de atendimento da Rede Raízes do Nordeste.
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="alert alert-success mt-4 mb-0">
+
+        <h5 class="alert-heading">Termo de Consentimento</h5>
+
+        <p class="mb-0">
+          Declaro que li e compreendi esta Política de Privacidade e autorizo o tratamento dos meus dados pessoais
+          para
+          utilização dos serviços oferecidos pela Rede Raízes do Nordeste, conforme a Lei Geral de Proteção de Dados
+          (LGPD).
+        </p>
+
+      </div>
     </div>
   </div>
 </template>

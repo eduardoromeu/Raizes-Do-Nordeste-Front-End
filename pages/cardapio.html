@@ -15,13 +15,18 @@
       <div class="input-group-text" id="text-pesquisa-cardapio">
         <i class="bi bi-search"></i>
       </div>
-      <input type="text" class="form-control" placeholder="Digite para pesquisar" aria-label="Input group example"
-        aria-describedby="text-pesquisa-cardapio">
+      <input id="pesquisa-cardapio-input" type="text" class="form-control" placeholder="Digite para pesquisar"
+        aria-label="Pesquisar produtos" aria-describedby="text-pesquisa-cardapio">
     </div>
 
-    <div id="container-cardapio" class="container p-0 mt-2 d-flex flex-column">
+    <div id="container-cardapio" class="container p-0 mt-2 d-flex flex-column"></div>
 
+    <div id="cardapio-message" class="alert alert-secondary mb-0 mt-2 d-none" role="status" hidden>
+      Nenhum produto encontrado.
+      <button class="btn btn-link link-success p-0 m-0" onclick="limparPesquisaCardapio()">Limpar
+        Pesquisa</button>
     </div>
+
 
     <div id="modal-produto"></div>
   </div>
