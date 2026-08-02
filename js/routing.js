@@ -126,7 +126,8 @@ const routes = {
     title: "Programa de Fidelidade",
     showNavbar: true,
     requerLogin: true,
-    requerUnidade: false
+    requerUnidade: false,
+    onLoad: () => carregarPaginaFidelidade()
   }
 };
 

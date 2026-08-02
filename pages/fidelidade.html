@@ -1,3 +1,123 @@
 <template>
+  <div class="container py-4 d-flex flex-column flex-grow-1">
 
+    <h1 class="fw-bold mb-3 pb-2 border-bottom">
+      Programa de Fidelidade
+    </h1>
+
+    <div class="row g-3 mb-4">
+      <div class="col-12 col-lg-8">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div>
+                <small class="text-muted d-block">Saldo atual</small>
+                <h2 id="fidelidade-pontos-atual" class="fw-bold mb-0">0 pontos</h2>
+              </div>
+            </div>
+
+            <span id="fidelidade-proxima-meta" class="badge text-bg-warning fs-6 mb-2">
+              Próxima meta: 0 pts
+            </span>
+
+            <div class="mb-2">
+              <div class="d-flex justify-content-between small text-muted mb-1">
+                <span>Seu progresso</span>
+                <span id="fidelidade-progresso-texto">0%</span>
+              </div>
+              <div class="progress" role="progressbar" aria-label="Progresso de pontos">
+                <div id="fidelidade-progresso-barra" class="progress-bar bg-warning" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <small id="fidelidade-progresso-detalhe" class="text-muted">
+              Ganhe mais pontos para alcançar sua próxima recompensa.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-header fw-semibold">
+            Regras do Programa
+          </div>
+          <div class="card-body">
+            <ul class="mb-0 ps-3">
+              <li class="mb-2">1 ponto por real gasto em pedidos.</li>
+              <li class="mb-2">50 pontos ao completar o cadastro.</li>
+              <li class="mb-2">Bônus de 50% em datas comemorativas.</li>
+              <li>Bônus de 50% no aniversário do cliente.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="mb-4">
+      <h2 class="h4 fw-semibold mb-3">Recompensas</h2>
+      <div id="fidelidade-feedback" class="alert d-none" role="alert"></div>
+      <div id="fidelidade-recompensas" class="row g-3"></div>
+    </section>
+
+    <section class="mb-4">
+      <h2 class="h4 fw-semibold mb-3">Histórico de Pontos</h2>
+      <div class="card shadow-sm">
+        <div class="card-body p-0">
+          <div id="fidelidade-historico" class="list-group list-group-flush"></div>
+          <div id="fidelidade-historico-vazio" class="text-center text-muted p-4 d-none">
+            Nenhuma movimentação de pontos ainda.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="h4 fw-semibold mb-3">FAQ</h2>
+      <div class="accordion" id="fidelidade-faq">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#faq-item-1" aria-expanded="false" aria-controls="faq-item-1">
+              Pergunta 1
+            </button>
+          </h2>
+          <div id="faq-item-1" class="accordion-collapse collapse" data-bs-parent="#fidelidade-faq">
+            <div class="accordion-body text-muted">
+              Texto em breve.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#faq-item-2" aria-expanded="false" aria-controls="faq-item-2">
+              Pergunta 2
+            </button>
+          </h2>
+          <div id="faq-item-2" class="accordion-collapse collapse" data-bs-parent="#fidelidade-faq">
+            <div class="accordion-body text-muted">
+              Texto em breve.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#faq-item-3" aria-expanded="false" aria-controls="faq-item-3">
+              Pergunta 3
+            </button>
+          </h2>
+          <div id="faq-item-3" class="accordion-collapse collapse" data-bs-parent="#fidelidade-faq">
+            <div class="accordion-body text-muted">
+              Texto em breve.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
 </template>
