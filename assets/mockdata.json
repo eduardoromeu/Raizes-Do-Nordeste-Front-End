@@ -5,6 +5,7 @@
       "nivel_acesso": "cliente",
       "email": "joaosilvada@netmail.com",
       "telefone": "23933020590",
+      "data_nascimento": "1990-03-15",
       "senha": "cliente123"
     },
     {
@@ -12,6 +13,7 @@
       "nivel_acesso": "Administrador",
       "email": "duduromeu@raizesdonordeste.com",
       "telefone": "5208267344",
+      "data_nascimento": "2005-03-02",
       "senha": "admin123"
     }
   ],

@@ -67,17 +67,19 @@ async function registerUser(event) {
 
   const usernameInput = document.getElementById("register-name");
   const telephoneInput = document.getElementById("register-telephone");
+  const birthdateInput = document.getElementById("register-birthdate");
   const emailInput = document.getElementById("register-email");
   const passwordInput = document.getElementById("register-password");
   const confirmPasswordInput = document.getElementById("register-confirm-password");
 
-  if (!usernameInput || !telephoneInput || !emailInput || !passwordInput || !confirmPasswordInput) {
+  if (!usernameInput || !telephoneInput || !birthdateInput || !emailInput || !passwordInput || !confirmPasswordInput) {
     showRegisterMessage("Ocorreu um erro no formulário de cadastro.");
     return false;
   }
 
   const nameValue = usernameInput.value.trim();
   const telephoneValue = telephoneInput.value.trim();
+  const birthdateValue = birthdateInput.value;
   const emailValue = emailInput.value.trim();
   const passwordValue = passwordInput.value.trim();
   const confirmPasswordValue = confirmPasswordInput.value.trim();
@@ -97,6 +99,11 @@ async function registerUser(event) {
     return false;
   }
 
+  if (!birthdateValue) {
+    showRegisterMessage("Informe sua data de nascimento.");
+    return false;
+  }
+
   if (!passwordValue || passwordValue.length < 6) {
     showRegisterMessage("A senha deve ter pelo menos 6 caracteres.");
     return false;
@@ -112,6 +119,7 @@ async function registerUser(event) {
       nome: nameValue,
       email: emailValue,
       telefone: telephoneValue,
+      data_nascimento: birthdateValue,
       senha: passwordValue,
       nivel_acesso: "cliente"
     });
