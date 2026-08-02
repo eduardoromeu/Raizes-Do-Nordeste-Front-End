@@ -45,8 +45,8 @@ function saveCartToStorage(cart) {
 function loadOrdersFromStorage() {
   // console.log("carregando ordens salvas");
   const raw = localStorage.getItem(STORAGE_ORDERS_KEY);
-  // console.log(raw);
-  if (!raw || raw == {}) return [];
+  console.log(raw);
+  if (!raw || raw == "{}") return [];
   try {
     return JSON.parse(raw);
   } catch (e) {
