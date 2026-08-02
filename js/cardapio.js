@@ -28,68 +28,98 @@ async function loadCardapio() {
     // carrega modal do produto
     replaceComponent("modal-produto", "./components/modal-produto.html")
 
-    container.innerHTML = '';
-    const row = document.createElement('div');
-    row.className = 'row g-3 mt-2';
-
     const produtoIds = unidade.cardapio || [];
     const allProdutos = await getMockProdutos();
+    const produtos = produtoIds
+      .map((pid) => allProdutos.find((p) => p.id === pid))
+      .filter(Boolean);
 
-    produtoIds.forEach((pid) => {
-      const produto = allProdutos.find(p => p.id === pid);
-      if (!produto) return; // ignora ids não existentes
-
-      const fragment = template.cloneNode(true);
-      // raiz do card
-      const card = fragment.querySelector('.card') || fragment.firstElementChild;
-      if (!card) return;
-
-      // imagem
-      const img = card.querySelector('.img-produto');
-      if (img && produto.imagem) {
-        img.src = produto.imagem;
-        img.alt = produto.titulo;
+    const inputPesquisa = document.getElementById('pesquisa-cardapio-input');
+    const mensagemNenhumProduto = document.getElementById('cardapio-message');
+    const renderProdutos = (query = '') => {
+      container.innerHTML = '';
+      if (mensagemNenhumProduto) {
+        mensagemNenhumProduto.hidden = true;
+        mensagemNenhumProduto.classList.add('d-none');
       }
 
-      // título
-      const titulo = card.querySelector('.card-title');
-      if (titulo) titulo.textContent = produto.titulo || '';
+      const filtro = query.trim().toLowerCase();
+      const produtosFiltrados = filtro
+        ? produtos.filter((produto) => produto.titulo?.toLowerCase().includes(filtro))
+        : produtos;
 
-      // preço
-      const precoEl = card.querySelector('.card-text');
-      if (precoEl) precoEl.textContent = `R$ ${Number(produto.preco).toFixed(2).replace('.', ',')}`;
-
-      // botão adicionar ao carrinho
-      const btn = card.querySelector('button[data-id-produto]');
-      if (btn) {
-        btn.setAttribute('data-id-produto', produto.id);
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const pidAttr = e.currentTarget.getAttribute('data-id-produto');
-          if (typeof window.addToCart === 'function') {
-            window.addToCart(Number(pidAttr));
-          } else {
-            console.log('Adicionar ao carrinho:', pidAttr);
-          }
-        });
+      if (produtosFiltrados.length === 0) {
+        if (mensagemNenhumProduto) {
+          mensagemNenhumProduto.hidden = false;
+          mensagemNenhumProduto.classList.remove('d-none');
+        }
+        return;
       }
 
-      // clicar no card para abrir o modal do produto
-      card.addEventListener('click', () => abrirModalProduto(produto));
-      card.style.cursor = 'pointer';
+      const row = document.createElement('div');
+      row.className = 'row g-3 mt-2';
 
-      // anexa o card em uma coluna do grid responsivo
-      const wrapper = document.createElement('div');
-      wrapper.className = 'col-12 col-md-6 col-lg-4';
-      wrapper.appendChild(card);
-      row.appendChild(wrapper);
-    });
+      produtosFiltrados.forEach((produto) => {
+        const fragment = template.cloneNode(true);
+        const card = fragment.querySelector('.card') || fragment.firstElementChild;
+        if (!card) return;
 
-    container.appendChild(row);
+        const img = card.querySelector('.img-produto');
+        if (img && produto.imagem) {
+          img.src = produto.imagem;
+          img.alt = produto.titulo;
+        }
 
-  } catch (error) {
-    console.error('Erro ao carregar cardápio:', error);
+        const titulo = card.querySelector('.card-title');
+        if (titulo) titulo.textContent = produto.titulo || '';
+
+        const precoEl = card.querySelector('.card-text');
+        if (precoEl) precoEl.textContent = `R$ ${Number(produto.preco).toFixed(2).replace('.', ',')}`;
+
+        const btn = card.querySelector('button[data-id-produto]');
+        if (btn) {
+          btn.setAttribute('data-id-produto', produto.id);
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const pidAttr = e.currentTarget.getAttribute('data-id-produto');
+            if (typeof window.addToCart === 'function') {
+              window.addToCart(Number(pidAttr));
+            } else {
+              console.log('Adicionar ao carrinho:', pidAttr);
+            }
+          });
+        }
+
+        card.addEventListener('click', () => abrirModalProduto(produto));
+        card.style.cursor = 'pointer';
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'col-12 col-md-6 col-lg-4';
+        wrapper.appendChild(card);
+        row.appendChild(wrapper);
+      });
+
+      container.appendChild(row);
+    };
+
+
+  if (inputPesquisa) {
+    inputPesquisa.value = '';
+    inputPesquisa.addEventListener('input', (event) => renderProdutos(event.target.value));
   }
+
+  renderProdutos('');
+
+} catch (error) {
+  console.error('Erro ao carregar cardápio:', error);
+}
+}
+
+function limparPesquisaCardapio() {
+  const inputPesquisa = document.getElementById('pesquisa-cardapio-input');
+  if (inputPesquisa)
+    inputPesquisa.value = '';
+  loadCardapio();
 }
 
 function abrirModalProduto(produto) {
