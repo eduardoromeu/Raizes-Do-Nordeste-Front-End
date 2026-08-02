@@ -9,6 +9,7 @@ async function carregarPaginaPedido() {
   const txtIdPedido = document.querySelector("#pedido-id");
   const txtStatusPedido = document.querySelector("#pedido-status");
   const sliderProgresso = document.querySelector("#pedido-progress");
+  const dataPedidoRealizado = document.querySelector("#data-pedido-realizado");
 
   if (txtIdPedido)
     txtIdPedido.textContent = "#" + id_pedido.toString().padStart(4, '0');
@@ -49,7 +50,8 @@ async function carregarPaginaPedido() {
       break;
   }
 
-
+  if (dataPedidoRealizado)
+    dataPedidoRealizado.textContent = formatOrderDate(pedido.timestamp);
 
   if (sliderProgresso)
     sliderProgresso.style.width = `${widthProgresso}%`
