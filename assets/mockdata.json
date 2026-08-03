@@ -15,6 +15,14 @@
       "telefone": "5208267344",
       "data_nascimento": "2005-03-02",
       "senha": "admin123"
+    },
+    {
+      "nome": "Cozinha Matriz",
+      "nivel_acesso": "cozinha",
+      "email": "coz.matriz@raizesdonordeste.com",
+      "telefone": "2396843214",
+      "data_nascimento": "1990-01-01",
+      "senha": "cozinha321"
     }
   ],
   "unidades": [

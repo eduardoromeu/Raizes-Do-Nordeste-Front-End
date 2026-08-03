@@ -135,7 +135,14 @@ const routes = {
     requerLogin: true,
     requerUnidade: false,
     onLoad: () => carregarPaginaFidelidade()
-  }
+  },
+  "/filapedidos": {
+    page: "filapedidos",
+    title: "Fila de Pedidos",
+    showNavbar: true,
+    requerLogin: true,
+    requerUnidade: false
+  },
 };
 
 // página atual

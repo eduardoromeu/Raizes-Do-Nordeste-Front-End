@@ -346,7 +346,6 @@ function updateNavbar() {
         link.classList.add("d-none");
       }
     }
-    console.log(`${accessLevels} | ${currentUser.nivel_acesso}`);
 
     if (accessLevels && userLogado && currentUser) {
 
