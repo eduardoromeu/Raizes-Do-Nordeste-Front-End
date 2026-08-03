@@ -54,6 +54,10 @@ function saveResgatesMap(resgatesMap) {
   localStorage.setItem(STORAGE_FIDELIDADE_RESGATES_KEY, JSON.stringify(resgatesMap));
 }
 
+function limparResgatesFidelidade() {
+  localStorage.removeItem(STORAGE_FIDELIDADE_RESGATES_KEY);
+}
+
 function getResgatesUsuario() {
   const userKey = getFidelidadeUserKey();
   const resgatesMap = loadResgatesMap();
