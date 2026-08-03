@@ -10,13 +10,15 @@ async function carregarPaginaPedido() {
   const id_pedido = getRouteParams().get("id_pedido");
 
   if (!id_pedido) {
-    navigate("/notfound");
+    if (currentPage && currentPage.page == "statuspedido")
+      navigate("/notfound");
     return;
   }
 
   const pedido = getOrderFromId(id_pedido);
   if (!pedido) {
-    navigate("/notfound");
+    if (currentPage && currentPage.page == "statuspedido")
+      navigate("/notfound");
     return;
   }
 
