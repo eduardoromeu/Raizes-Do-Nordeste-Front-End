@@ -318,10 +318,15 @@ function updateNavbar() {
     }
   }
 
+  // páginas para dispositivos
+  const deviceAtual = getTipoDispositivo();
+
   const links = document.querySelectorAll(".nav-link");
   links.forEach((link) => {
     const route = link.dataset.route;
     const highlightAt = link.dataset.highlightAt;
+    const accessLevels = link.dataset.accessLevels;
+    const showOnDevices = link.dataset.showOnDevices;
 
     if (route === currentRoute || highlightAt === currentRoute) {
       link.classList.remove("text-secondary");
@@ -330,13 +335,36 @@ function updateNavbar() {
       link.classList.remove("text-primary");
       link.classList.add("text-secondary");
     }
-  });
 
+
+    if (showOnDevices && deviceAtual) {
+      if (showOnDevices.includes(deviceAtual)) {
+        link.classList.remove("d-none");
+        link.classList.add("d-flex");
+      } else {
+        link.classList.remove("d-flex");
+        link.classList.add("d-none");
+      }
+    }
+    console.log(`${accessLevels} | ${currentUser.nivel_acesso}`);
+
+    if (accessLevels && userLogado && currentUser) {
+
+      if (accessLevels.includes(currentUser.nivel_acesso)) {
+        link.classList.remove("d-none");
+        link.classList.add("d-flex");
+      } else {
+        link.classList.remove("d-flex");
+        link.classList.add("d-none");
+      }
+    }
+  });
 
   const cartQuantity = document.querySelector("#cart-quantity");
   if (cartQuantity) {
     cartQuantity.textContent = `${getCartQuantity() || 0}`;
   }
+
 }
 
 // retorna se é totem ou app/web
