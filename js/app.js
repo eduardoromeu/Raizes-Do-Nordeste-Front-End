@@ -201,6 +201,9 @@ function logOut() {
   clearUnidadeStorage();
   limparCarrinho();
   limparOrdens();
+  if (typeof limparResgatesFidelidade === "function") {
+    limparResgatesFidelidade();
+  }
   navigate("/");
 }
 
