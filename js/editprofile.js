@@ -6,6 +6,7 @@ function populateEditProfileForm() {
 
   const usernameInput = document.getElementById("username");
   const telephoneInput = document.getElementById("telephone");
+  const birthdateInput = document.getElementById("birthdate");
   const emailInput = document.getElementById("email");
   const currentPasswordInput = document.getElementById("curr-password");
   const newPasswordInput = document.getElementById("new-password");
@@ -16,6 +17,9 @@ function populateEditProfileForm() {
   }
   if (telephoneInput) {
     telephoneInput.value = currentUser.telefone || "";
+  }
+  if (birthdateInput) {
+    birthdateInput.value = currentUser.data_nascimento || "";
   }
   if (emailInput) {
     emailInput.value = currentUser.email || "";
@@ -57,12 +61,13 @@ async function saveProfileEdit(event) {
 
   const usernameInput = document.getElementById("username");
   const telephoneInput = document.getElementById("telephone");
+  const birthdateInput = document.getElementById("birthdate");
   const emailInput = document.getElementById("email");
   const currentPasswordInput = document.getElementById("curr-password");
   const newPasswordInput = document.getElementById("new-password");
   const confirmPasswordInput = document.getElementById("confirm-password");
 
-  if (!usernameInput || !telephoneInput || !emailInput || !currentPasswordInput || !newPasswordInput || !confirmPasswordInput) {
+  if (!usernameInput || !telephoneInput || !birthdateInput || !emailInput || !currentPasswordInput || !newPasswordInput || !confirmPasswordInput) {
     showEditProfileMessage("Ocorreu um erro no formulário de edição.");
     return false;
   }
@@ -75,6 +80,7 @@ async function saveProfileEdit(event) {
   const originalEmail = currentUser.email;
   const nameValue = usernameInput.value.trim();
   const telephoneValue = telephoneInput.value.trim();
+  const birthdateValue = birthdateInput.value;
   const emailValue = emailInput.value.trim();
   const currentPasswordValue = currentPasswordInput.value.trim();
   const newPasswordValue = newPasswordInput.value.trim();
@@ -95,11 +101,17 @@ async function saveProfileEdit(event) {
     return false;
   }
 
+  if (!birthdateValue) {
+    showEditProfileMessage("Informe sua data de nascimento.");
+    return false;
+  }
+
   const updatedUser = {
     ...currentUser,
     nome: nameValue,
     email: emailValue,
-    telefone: telephoneValue
+    telefone: telephoneValue,
+    data_nascimento: birthdateValue
   };
 
   if (newPasswordValue || confirmPasswordValue || currentPasswordValue) {
