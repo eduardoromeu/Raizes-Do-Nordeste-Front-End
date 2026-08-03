@@ -65,7 +65,8 @@ const routes = {
     title: "Privacidade e Dados",
     showNavbar: true,
     requerLogin: true,
-    requerUnidade: false
+    requerUnidade: false,
+    onLoad: () => renderColetaDadosPromo()
   },
   "/cardapio": {
     page: "cardapio",

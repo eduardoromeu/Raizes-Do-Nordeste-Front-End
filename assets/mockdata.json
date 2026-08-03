@@ -6,6 +6,7 @@
       "email": "joaosilvada@netmail.com",
       "telefone": "23933020590",
       "data_nascimento": "1990-03-15",
+      "consentDados": true,
       "senha": "cliente123"
     },
     {
@@ -14,6 +15,7 @@
       "email": "duduromeu@raizesdonordeste.com",
       "telefone": "5208267344",
       "data_nascimento": "2005-03-02",
+      "consentDados": true,
       "senha": "admin123"
     },
     {
@@ -22,6 +24,7 @@
       "email": "coz.matriz@raizesdonordeste.com",
       "telefone": "2396843214",
       "data_nascimento": "1990-01-01",
+      "consentDados": true,
       "senha": "cozinha321"
     }
   ],

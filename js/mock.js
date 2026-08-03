@@ -104,7 +104,8 @@ async function authenticateUser(userAccess, password) {
     telefone: user.telefone,
     data_nascimento: user.data_nascimento || null,
     nivel_acesso: user.nivel_acesso,
-    senha: user.senha
+    senha: user.senha,
+    consentDados: user.consentDados
   };
 }
 
@@ -114,6 +115,7 @@ async function createMockUser(userData) {
     email: userData.email?.trim(),
     telefone: userData.telefone?.trim(),
     data_nascimento: userData.data_nascimento || null,
+    consentDados: userData.consentDados || false,
     senha: userData.senha,
     nivel_acesso: userData.nivel_acesso || "cliente"
   };
@@ -142,6 +144,7 @@ async function updateMockUser(originalEmail, userData) {
     email: userData.email?.trim(),
     telefone: userData.telefone?.trim(),
     data_nascimento: userData.data_nascimento || null,
+    consentDados: userData.consentDados,
     senha: userData.senha,
     nivel_acesso: userData.nivel_acesso || "cliente"
   };

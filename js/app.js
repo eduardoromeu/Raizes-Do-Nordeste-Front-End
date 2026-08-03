@@ -68,6 +68,7 @@ async function registerUser(event) {
   const usernameInput = document.getElementById("register-name");
   const telephoneInput = document.getElementById("register-telephone");
   const birthdateInput = document.getElementById("register-birthdate");
+  const checkMarketing = document.getElementById("checkMarketing");
   const emailInput = document.getElementById("register-email");
   const passwordInput = document.getElementById("register-password");
   const confirmPasswordInput = document.getElementById("register-confirm-password");
@@ -80,6 +81,7 @@ async function registerUser(event) {
   const nameValue = usernameInput.value.trim();
   const telephoneValue = telephoneInput.value.trim();
   const birthdateValue = birthdateInput.value;
+  const marketingValue = checkMarketing.checked;
   const emailValue = emailInput.value.trim();
   const passwordValue = passwordInput.value.trim();
   const confirmPasswordValue = confirmPasswordInput.value.trim();
@@ -120,6 +122,7 @@ async function registerUser(event) {
       email: emailValue,
       telefone: telephoneValue,
       data_nascimento: birthdateValue,
+      consentDados: marketingValue,
       senha: passwordValue,
       nivel_acesso: "cliente"
     });
@@ -402,6 +405,23 @@ function setTipoDispositivo(device) {
 
 function carregarModalPrivacidade() {
   replaceComponent("modal-politica-privacidade", "./components/modal-politica-privacidade.html");
+}
+
+function renderColetaDadosPromo() {
+  const checkMarketing = document.getElementById("checkMarketing");
+  if (checkMarketing && currentUser) {
+    checkMarketing.checked = currentUser.consentDados;
+  }
+}
+
+async function updateColetaDadosPromo() {
+  const checkMarketing = document.getElementById("checkMarketing");
+  if (checkMarketing) {
+    currentUser.consentDados = checkMarketing.checked;
+    saveUserToStorage(currentUser);
+    await updateMockUser(currentUser.email, currentUser);
+  };
+  alert("Alteração de preferência salva com sucesso");
 }
 
 loadAppState();
