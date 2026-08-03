@@ -49,7 +49,7 @@ async function carregarPaginaPedido() {
       widthProgresso = 15;
       break;
     case "Em Preparo":
-      bgColor = "text-bg-info";
+      bgColor = "text-bg-primary";
       widthProgresso = 45;
       break;
     case "Aguardando Retirada":

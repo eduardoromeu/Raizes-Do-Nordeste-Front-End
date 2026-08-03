@@ -339,19 +339,35 @@ function updateNavbar() {
 // retorna se é totem ou app/web
 function getTipoDispositivo() {
   const storedDevice = localStorage.getItem(STORAGE_DEVICE_KEY);
-  if (storedDevice && storedDevice == 'totem' || storedDevice == 'webapp') {
-    return storedDevice;
+
+  switch (storedDevice) {
+    case "totem":
+    case "webapp":
+    case "cozinha":
+    case "atendimento":
+      return storedDevice;
+      break;
+    default:
+      return 'webapp';
+      break;
   }
-  return 'webapp';
 }
 
 // define tipo de dispositivo do app
 function setTipoDispositivo(device) {
-  if (device && device == 'totem' || device == 'webapp') {
-    localStorage.setItem(STORAGE_DEVICE_KEY, device);
-    return;
+
+  switch (device) {
+    case "totem":
+    case "webapp":
+    case "cozinha":
+    case "atendimento":
+      localStorage.setItem(STORAGE_DEVICE_KEY, device);
+      break;
+    default:
+      console.error("Tipo de dispositivo inválido");
+      break;
   }
-  console.error("Tipo de dispositivo inválido");
+  alert(`Tipo de dispositivo alterado para ${device}`);
 }
 
 function carregarModalPrivacidade() {

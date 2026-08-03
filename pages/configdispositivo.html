@@ -1,0 +1,38 @@
+<template>
+  <div
+    class="container-fluid py-2 d-flex flex-column justify-content-center align-items-stretch text-center flex-grow-1">
+    <h4 class="mb-4">Selecione o tipo de dispositivo</h4>
+
+    <div class="d-flex flex-column justify-content-center align-items-stretch">
+      <a class="card h-100 shadow-sm text-decoration-none mb-4" onclick="setTipoDispositivo('webapp')">
+        <div class="card-body d-flex justify-content-center align-items-center text-center">
+          <i class="bi bi-window me-2"></i>
+          <p class="card-title m-0">WebApp</p>
+        </div>
+      </a>
+
+      <a class="card h-100 shadow-sm text-decoration-none mb-4" onclick="setTipoDispositivo('totem')">
+        <div class="card-body d-flex justify-content-center align-items-center text-center">
+          <i class="bi bi-person-workspace me-2"></i>
+          <p class="card-title m-0">Totem de autoatendimento</p>
+        </div>
+      </a>
+
+      <a class="card h-100 shadow-sm text-decoration-none mb-4" onclick="setTipoDispositivo('cozinha')">
+        <div class="card-body d-flex justify-content-center align-items-center text-center">
+          <i class="bi bi-fork-knife me-2"></i>
+          <p class="card-title m-0">Cozinha</p>
+        </div>
+      </a>
+
+      <a class="card h-100 shadow-sm text-decoration-none mb-4" onclick="setTipoDispositivo('atendimento')">
+        <div class="card-body d-flex justify-content-center align-items-center text-center">
+          <i class="bi bi-person-raised-hand me-2"></i>
+          <p class="card-title m-0">Atendimento</p>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+</template>

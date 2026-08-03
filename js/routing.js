@@ -121,6 +121,13 @@ const routes = {
     requerLogin: false,
     requerUnidade: false
   },
+  "/configdispositivo": {
+    page: "configdispositivo",
+    title: "Configurar Dispositivo",
+    showNavbar: true,
+    requerLogin: true,
+    requerUnidade: false
+  },
   "/fidelidade": {
     page: "fidelidade",
     title: "Programa de Fidelidade",
