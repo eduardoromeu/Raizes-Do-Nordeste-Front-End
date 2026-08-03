@@ -28,7 +28,7 @@ async function carregarPaginaPedido() {
   if (txtIdPedido)
     txtIdPedido.textContent = "#" + id_pedido.toString().padStart(4, '0');
 
-  atualizarStatusPedido(pedido);
+  await atualizarStatusPedido(pedido);
 
   let bgColor = "text-bg-warning";
   let widthProgresso = 5;
@@ -78,6 +78,10 @@ async function carregarPaginaPedido() {
   if (txtStatusPedido) {
     txtStatusPedido.textContent = pedido.status;
     txtStatusPedido.classList.remove("text-bg-primary");
+    txtStatusPedido.classList.remove("text-bg-warning");
+    txtStatusPedido.classList.remove("text-bg-success");
+    txtStatusPedido.classList.remove("text-bg-info");
+    txtStatusPedido.classList.remove("text-bg-secondary");
     txtStatusPedido.classList.add(bgColor);
   }
 
@@ -122,7 +126,7 @@ async function carregarPaginaPedido() {
 
 }
 
-function atualizarStatusPedido(pedido) {
+async function atualizarStatusPedido(pedido) {
   if (!pedido || !pedido.timestamp) return;
   if (pedido.status === "Aguardando Pagamento" || pedido.status === "Finalizado") return;
 
