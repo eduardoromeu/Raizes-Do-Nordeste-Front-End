@@ -27,7 +27,7 @@
         </div>
 
         <div class="d-flex flex-column justify-content-between align-items-stretch">
-          <button class="btn btn-primary">
+          <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalMudarStatusPedido">
             Alterar Status
           </button>
 
@@ -82,5 +82,27 @@
     </div>
   </div>
 
+  </div>
+
+  <div class="modal fade" id="modalMudarStatusPedido" tabindex="-1" aria-labelledby="modalMudarStatusPedidoLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalMudarStatusPedidoLabel">Mudar Status do Pedido</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex flex-column align-items-stretch justify-content-center">
+            <button type="button" class="btn btn-warning mb-3" data-bs-dismiss="modal">Recebido</button>
+            <button type="button" class="btn btn-primary mb-3" data-bs-dismiss="modal">Em Preparo</button>
+            <button type="button" class="btn btn-warning mb-3" data-bs-dismiss="modal">Aguardando Retirada</button>
+            <button type="button" class="btn btn-success mb-3" data-bs-dismiss="modal">A Caminho</button>
+            <button type="button" class="btn btn-secondary mb-3" data-bs-dismiss="modal">Finalizado</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
 </template>
