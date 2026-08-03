@@ -1,10 +1,24 @@
+let _pedidoRefreshInterval = null;
 
 async function carregarPaginaPedido() {
+
+  if (_pedidoRefreshInterval) {
+    clearInterval(_pedidoRefreshInterval);
+    _pedidoRefreshInterval = null;
+  }
+
   const id_pedido = getRouteParams().get("id_pedido");
-  if (!id_pedido) navigate("/notfound");
+
+  if (!id_pedido) {
+    navigate("/notfound");
+    return;
+  }
 
   const pedido = getOrderFromId(id_pedido);
-  if (!pedido) navigate("/notfound");
+  if (!pedido) {
+    navigate("/notfound");
+    return;
+  }
 
   const txtIdPedido = document.querySelector("#pedido-id");
   const txtStatusPedido = document.querySelector("#pedido-status");
@@ -13,6 +27,8 @@ async function carregarPaginaPedido() {
 
   if (txtIdPedido)
     txtIdPedido.textContent = "#" + id_pedido.toString().padStart(4, '0');
+
+  atualizarStatusPedido(pedido);
 
   let bgColor = "text-bg-warning";
   let widthProgresso = 5;
@@ -34,7 +50,7 @@ async function carregarPaginaPedido() {
       break;
     case "Em Preparo":
       bgColor = "text-bg-info";
-      widthProgresso = 55;
+      widthProgresso = 45;
       break;
     case "Aguardando Retirada":
       bgColor = "text-bg-warning";
@@ -53,8 +69,11 @@ async function carregarPaginaPedido() {
   if (dataPedidoRealizado)
     dataPedidoRealizado.textContent = formatOrderDate(pedido.timestamp);
 
-  if (sliderProgresso)
+  if (sliderProgresso) {
     sliderProgresso.style.width = `${widthProgresso}%`
+    if (pedido.status == "Finalizado")
+      sliderProgresso.classList.remove("progress-bar-animated")
+  }
 
   if (txtStatusPedido) {
     txtStatusPedido.textContent = pedido.status;
@@ -69,7 +88,10 @@ async function carregarPaginaPedido() {
     const valorPedido = await getValorCarrinho(pedido.cart);
     txtValorPedido.textContent = formatPrice(valorPedido);
   }
-  console.log(pedido.cart);
+
+  // console.log(pedido.cart);
+
+  // itens do pedido
   if (contItensPedido) {
     contItensPedido.innerHTML = '';
     pedido.cart.forEach(async (item) => {
@@ -92,6 +114,36 @@ async function carregarPaginaPedido() {
 
       contItensPedido.appendChild(itemEl);
     });
+  }
+
+  if (pedido.status !== "Finalizado") {
+    _pedidoRefreshInterval = setInterval(carregarPaginaPedido, 60000);
+  }
+
+}
+
+function atualizarStatusPedido(pedido) {
+  if (!pedido || !pedido.timestamp) return;
+  if (pedido.status === "Aguardando Pagamento" || pedido.status === "Finalizado") return;
+
+  const minutosDecorridos = Math.floor((Date.now() - Number(pedido.timestamp)) / 60000);
+  let novoStatus = pedido.status;
+
+  if (minutosDecorridos >= 11) {
+    novoStatus = "Finalizado";
+  } else if (minutosDecorridos >= 4) {
+    if (pedido.status === "Aguardando Retirada" || pedido.status === "A Caminho") {
+      novoStatus = pedido.status;
+    } else {
+      novoStatus = Math.random() < 0.5 ? "Aguardando Retirada" : "A Caminho";
+    }
+  } else if (minutosDecorridos >= 1) {
+    novoStatus = "Em Preparo";
+  }
+
+  if (novoStatus !== pedido.status) {
+    setOrderStatus(pedido.id, novoStatus);
+    pedido.status = novoStatus;
   }
 }
 
@@ -161,6 +213,8 @@ async function carregarHistoricoPedidos() {
     for (const pedido of pedidosFiltrados) {
       const idPedidoFormatado = pedido.id.toString().padStart(4, '0');
       const valorPedido = await getValorCarrinho(pedido.cart);
+
+      atualizarStatusPedido(pedido);
 
       const itensTitulo = pedido.cart
         .map((item) => produtos.find((p) => Number(p.id) === Number(item.produtoId))?.titulo || "")
