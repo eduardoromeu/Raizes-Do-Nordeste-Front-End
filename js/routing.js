@@ -144,6 +144,27 @@ const routes = {
     requerLogin: true,
     requerUnidade: false
   },
+  "/relatoriosgerencia": {
+    page: "relatoriosgerencia",
+    title: "Relatórios Gerenciais",
+    showNavbar: true,
+    requerLogin: true,
+    requerUnidade: true,
+  },
+  "/telaconfig": {
+    page: "telaconfig",
+    title: "Configurações",
+    showNavbar: true,
+    requerLogin: true,
+    requerUnidade: true,
+  },
+  "/configpromo": {
+    page: "configpromo",
+    title: "Promoções",
+    showNavbar: true,
+    requerLogin: true,
+    requerUnidade: true,
+  },
 };
 
 // página atual
