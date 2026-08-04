@@ -1,3 +1,289 @@
 <template>
-  <button type="button" class="btn btn-outline-secondary mb-3" data-route="/telaconfig">Voltar</button>
+  <div class="container py-4 d-flex flex-column gap-3">
+
+    <!-- Cabeçalho -->
+    <div>
+      <button type="button" class="btn btn-outline-secondary btn-sm mb-3" data-route="/telaconfig">
+        <i class="bi bi-arrow-left me-1"></i> Voltar
+      </button>
+      <h2 class="fw-bold mb-1 pb-2 border-bottom">
+        <i class="bi bi-cash-coin me-2 text-success"></i>Gerenciamento de Promoções
+      </h2>
+      <p class="text-muted mb-0">
+        O gerente pode criar e administrar campanhas promocionais, definindo descontos, produtos participantes e períodos de vigência.
+      </p>
+    </div>
+
+    <!-- Barra de ações -->
+    <div class="d-flex flex-column flex-sm-row gap-2 justify-content-between align-items-stretch align-items-sm-center">
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-search"></i></span>
+        <input type="text" class="form-control" placeholder="Pesquisar promoções..." aria-label="Pesquisar promoções">
+      </div>
+      <button type="button" class="btn btn-success flex-shrink-0" data-bs-toggle="modal" data-bs-target="#modalNovaPromocao">
+        <i class="bi bi-plus-circle me-1"></i> Nova Promoção
+      </button>
+    </div>
+
+    <!-- Card: Promoção ATIVA -->
+    <div class="card shadow-sm border-success">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-start mb-2">
+          <div>
+            <h5 class="card-title mb-1 fw-semibold">Combo Nordestino em Dobro</h5>
+            <p class="card-text text-muted mb-2" style="font-size: 0.9rem;">
+              20% de desconto em qualquer combo nordestino para compras acima de R$ 30,00.
+            </p>
+            <div class="d-flex flex-wrap gap-2 align-items-center">
+              <span class="badge text-bg-success fs-6"><i class="bi bi-check-circle me-1"></i>Ativa</span>
+              <small class="text-muted"><i class="bi bi-calendar-range me-1"></i>01/08/2026 – 31/08/2026</small>
+              <small class="text-muted"><i class="bi bi-tag me-1"></i>20% de desconto</small>
+            </div>
+            <div class="mt-2">
+              <small class="text-muted"><strong>Produtos:</strong> Combo Nordestino, Combo Especial da Casa</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer d-flex gap-2 justify-content-end">
+        <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditarPromocao">
+          <i class="bi bi-pencil me-1"></i>Editar
+        </button>
+        <button type="button" class="btn btn-outline-warning btn-sm">
+          <i class="bi bi-pause-circle me-1"></i>Desativar
+        </button>
+      </div>
+    </div>
+
+    <!-- Card: Promoção AGENDADA -->
+    <div class="card shadow-sm border-primary">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-start mb-2">
+          <div>
+            <h5 class="card-title mb-1 fw-semibold">Semana da Tapioca</h5>
+            <p class="card-text text-muted mb-2" style="font-size: 0.9rem;">
+              Desconto de R$ 5,00 em todas as tapiocas durante a semana comemorativa do Nordeste.
+            </p>
+            <div class="d-flex flex-wrap gap-2 align-items-center">
+              <span class="badge text-bg-primary fs-6"><i class="bi bi-clock me-1"></i>Agendada</span>
+              <small class="text-muted"><i class="bi bi-calendar-range me-1"></i>15/09/2026 – 21/09/2026</small>
+              <small class="text-muted"><i class="bi bi-tag me-1"></i>R$ 5,00 de desconto</small>
+            </div>
+            <div class="mt-2">
+              <small class="text-muted"><strong>Produtos:</strong> Tapioca de Carne de Sol, Tapioca de Frango, Tapioca Doce</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer d-flex gap-2 justify-content-end">
+        <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditarPromocao">
+          <i class="bi bi-pencil me-1"></i>Editar
+        </button>
+        <button type="button" class="btn btn-outline-success btn-sm">
+          <i class="bi bi-play-circle me-1"></i>Ativar
+        </button>
+      </div>
+    </div>
+
+    <!-- Card: Promoção ENCERRADA -->
+    <div class="card shadow-sm border-secondary opacity-75">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-start mb-2">
+          <div>
+            <h5 class="card-title mb-1 fw-semibold text-secondary">Festa Junina Raízes</h5>
+            <p class="card-text text-muted mb-2" style="font-size: 0.9rem;">
+              15% de desconto em pratos típicos juninos durante o mês de junho.
+            </p>
+            <div class="d-flex flex-wrap gap-2 align-items-center">
+              <span class="badge text-bg-secondary fs-6"><i class="bi bi-x-circle me-1"></i>Encerrada</span>
+              <small class="text-muted"><i class="bi bi-calendar-range me-1"></i>01/06/2026 – 30/06/2026</small>
+              <small class="text-muted"><i class="bi bi-tag me-1"></i>15% de desconto</small>
+            </div>
+            <div class="mt-2">
+              <small class="text-muted"><strong>Produtos:</strong> Canjica, Pamonha, Milho Cozido, Arroz Doce</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer d-flex gap-2 justify-content-end">
+        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditarPromocao">
+          <i class="bi bi-pencil me-1"></i>Editar
+        </button>
+        <button type="button" class="btn btn-outline-success btn-sm">
+          <i class="bi bi-play-circle me-1"></i>Ativar
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Modal: Nova Promoção -->
+  <div class="modal fade" id="modalNovaPromocao" tabindex="-1" aria-labelledby="modalNovaPromocaoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalNovaPromocaoLabel">
+            <i class="bi bi-plus-circle me-2 text-success"></i>Nova Promoção
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="nomePromocao" class="form-label fw-semibold">Nome da Promoção <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="nomePromocao" placeholder="Ex: Combo Nordestino em Dobro">
+            </div>
+
+            <div class="mb-3">
+              <label for="descricaoPromocao" class="form-label fw-semibold">Descrição</label>
+              <textarea class="form-control" id="descricaoPromocao" rows="3" placeholder="Descreva os detalhes e condições da promoção..."></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Tipo e Valor do Desconto <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <select class="form-select" style="max-width: 180px;" aria-label="Tipo de desconto">
+                  <option value="percent" selected>Percentual (%)</option>
+                  <option value="fixed">Valor Fixo (R$)</option>
+                </select>
+                <input type="number" class="form-control" placeholder="0" min="0" aria-label="Valor do desconto">
+              </div>
+              <div class="form-text">Informe o percentual (ex: 20 para 20%) ou o valor fixo de desconto.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="produtosParticipantes" class="form-label fw-semibold">Produtos Participantes</label>
+              <select class="form-select" id="produtosParticipantes" multiple aria-label="Selecionar produtos participantes" size="5">
+                <option>Combo Nordestino</option>
+                <option>Combo Especial da Casa</option>
+                <option>Tapioca de Carne de Sol</option>
+                <option>Tapioca de Frango</option>
+                <option>Tapioca Doce</option>
+                <option>Cuscuz com Queijo</option>
+                <option>Canjica</option>
+                <option>Pamonha</option>
+                <option>Milho Cozido</option>
+                <option>Arroz Doce</option>
+                <option>Suco de Umbu</option>
+                <option>Baião de Dois</option>
+              </select>
+              <div class="form-text">Segure <kbd>Ctrl</kbd> (ou <kbd>⌘</kbd> no Mac) para selecionar múltiplos produtos.</div>
+            </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-6">
+                <label for="dataInicioPromocao" class="form-label fw-semibold">Data de Início <span class="text-danger">*</span></label>
+                <input type="date" class="form-control" id="dataInicioPromocao">
+              </div>
+              <div class="col-6">
+                <label for="dataFimPromocao" class="form-label fw-semibold">Data de Término <span class="text-danger">*</span></label>
+                <input type="date" class="form-control" id="dataFimPromocao">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="switchPromocaoAtiva" checked>
+                <label class="form-check-label fw-semibold" for="switchPromocaoAtiva">Promoção Ativa</label>
+              </div>
+              <div class="form-text">Quando ativada, a promoção será aplicada automaticamente nas datas definidas.</div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            <i class="bi bi-x me-1"></i>Cancelar
+          </button>
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+            <i class="bi bi-check-lg me-1"></i>Salvar Promoção
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Editar Promoção -->
+  <div class="modal fade" id="modalEditarPromocao" tabindex="-1" aria-labelledby="modalEditarPromocaoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEditarPromocaoLabel">
+            <i class="bi bi-pencil me-2 text-primary"></i>Editar Promoção
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="editNomePromocao" class="form-label fw-semibold">Nome da Promoção <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="editNomePromocao" value="Combo Nordestino em Dobro">
+            </div>
+
+            <div class="mb-3">
+              <label for="editDescricaoPromocao" class="form-label fw-semibold">Descrição</label>
+              <textarea class="form-control" id="editDescricaoPromocao" rows="3">20% de desconto em qualquer combo nordestino para compras acima de R$ 30,00.</textarea>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Tipo e Valor do Desconto <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <select class="form-select" style="max-width: 180px;" aria-label="Tipo de desconto">
+                  <option value="percent" selected>Percentual (%)</option>
+                  <option value="fixed">Valor Fixo (R$)</option>
+                </select>
+                <input type="number" class="form-control" value="20" min="0" aria-label="Valor do desconto">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="editProdutosParticipantes" class="form-label fw-semibold">Produtos Participantes</label>
+              <select class="form-select" id="editProdutosParticipantes" multiple aria-label="Selecionar produtos participantes" size="5">
+                <option selected>Combo Nordestino</option>
+                <option selected>Combo Especial da Casa</option>
+                <option>Tapioca de Carne de Sol</option>
+                <option>Tapioca de Frango</option>
+                <option>Tapioca Doce</option>
+                <option>Cuscuz com Queijo</option>
+                <option>Canjica</option>
+                <option>Pamonha</option>
+                <option>Milho Cozido</option>
+                <option>Arroz Doce</option>
+                <option>Suco de Umbu</option>
+                <option>Baião de Dois</option>
+              </select>
+              <div class="form-text">Segure <kbd>Ctrl</kbd> (ou <kbd>⌘</kbd> no Mac) para selecionar múltiplos produtos.</div>
+            </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-6">
+                <label for="editDataInicioPromocao" class="form-label fw-semibold">Data de Início <span class="text-danger">*</span></label>
+                <input type="date" class="form-control" id="editDataInicioPromocao" value="2026-08-01">
+              </div>
+              <div class="col-6">
+                <label for="editDataFimPromocao" class="form-label fw-semibold">Data de Término <span class="text-danger">*</span></label>
+                <input type="date" class="form-control" id="editDataFimPromocao" value="2026-08-31">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="editSwitchPromocaoAtiva" checked>
+                <label class="form-check-label fw-semibold" for="editSwitchPromocaoAtiva">Promoção Ativa</label>
+              </div>
+              <div class="form-text">Quando ativada, a promoção será aplicada automaticamente nas datas definidas.</div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            <i class="bi bi-x me-1"></i>Cancelar
+          </button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+            <i class="bi bi-check-lg me-1"></i>Salvar Alterações
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </template>
