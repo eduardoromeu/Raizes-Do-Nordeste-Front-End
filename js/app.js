@@ -106,6 +106,11 @@ async function registerUser(event) {
     return false;
   }
 
+  if (!isAtLeast14YearsOld(birthdateValue)) {
+    showRegisterMessage("O cliente deve ter ao menos 14 anos para se cadastrar.");
+    return false;
+  }
+
   if (!passwordValue || passwordValue.length < 6) {
     showRegisterMessage("A senha deve ter pelo menos 6 caracteres.");
     return false;
@@ -151,6 +156,19 @@ function isValidEmail(value) {
 
 function isValidPhone(value) {
   return /^[0-9+()\s-]{8,20}$/.test(value);
+}
+
+function isAtLeast14YearsOld(birthdateString) {
+  const birthDate = new Date(birthdateString);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDifference = today.getMonth() - birthDate.getMonth();
+  
+  if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  
+  return age >= 14;
 }
 
 async function logIn(event) {
