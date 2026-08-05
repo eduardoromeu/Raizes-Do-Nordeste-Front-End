@@ -1,3 +1,218 @@
-<template>
-  <button type="button" class="btn btn-outline-secondary mb-3" data-route="/telaconfig">Voltar</button>
+﻿<template>
+  <div class="container py-4 d-flex flex-column gap-4">
+    <div>
+      <button type="button" class="btn btn-outline-secondary btn-sm mb-3" data-route="/telaconfig">
+        <i class="bi bi-arrow-left me-1"></i>Voltar
+      </button>
+
+      <div class="row align-items-end g-3">
+        <div class="col-12 col-lg-auto">
+          <h2 class="fw-bold mb-1 pb-2 border-bottom">
+            <i class="bi bi-graph-up-arrow me-2 text-success"></i>Relatórios Gerenciais
+          </h2>
+          <p class="text-muted mb-0">
+            Acompanhe os principais indicadores de desempenho da lanchonete.
+          </p>
+        </div>
+
+        <div class="col-12 col-lg">
+          <div class="d-flex flex-column flex-sm-row gap-2">
+            <select class="form-select" aria-label="Selecionar período do relatório">
+              <option selected>Hoje</option>
+              <option>Semana</option>
+              <option>Mês</option>
+              <option>Personalizado</option>
+            </select>
+            <input type="date" class="form-control" aria-label="Data inicial personalizada">
+            <input type="date" class="form-control" aria-label="Data final personalizada">
+            <button type="button" class="btn btn-success flex-shrink-0">
+              <i class="bi bi-arrow-repeat me-1"></i>Atualizar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-12 col-sm-6 col-xl-3">
+        <div class="card h-100 shadow-sm border-primary">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <p class="text-muted mb-1">Pedidos Realizados</p>
+                <h4 class="fw-bold mb-0">248</h4>
+              </div>
+              <i class="bi bi-receipt-cutoff fs-2 text-primary"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-xl-3">
+        <div class="card h-100 shadow-sm border-success">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <p class="text-muted mb-1">Faturamento Total</p>
+                <h4 class="fw-bold mb-0">R$ 18.420,00</h4>
+              </div>
+              <i class="bi bi-currency-dollar fs-2 text-success"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-xl-3">
+        <div class="card h-100 shadow-sm border-warning">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <p class="text-muted mb-1">Ticket Médio</p>
+                <h4 class="fw-bold mb-0">R$ 74,27</h4>
+              </div>
+              <i class="bi bi-wallet2 fs-2 text-warning"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-xl-3">
+        <div class="card h-100 shadow-sm border-info">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <p class="text-muted mb-1">Clientes Atendidos</p>
+                <h4 class="fw-bold mb-0">196</h4>
+              </div>
+              <i class="bi bi-people fs-2 text-info"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="card-header bg-body-tertiary">
+        <h5 class="mb-0 fw-semibold">Produtos Mais Vendidos</h5>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover mb-0 align-middle">
+            <thead class="table-light">
+              <tr>
+                <th scope="col">Produto</th>
+                <th scope="col">Categoria</th>
+                <th scope="col" class="text-end">Quantidade Vendida</th>
+                <th scope="col" class="text-end">Receita Gerada</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Tapioca de Carne de Sol</td>
+                <td>Tapiocas</td>
+                <td class="text-end">88</td>
+                <td class="text-end">R$ 3.520,00</td>
+              </tr>
+              <tr>
+                <td>Cuscuz com Frango</td>
+                <td>Cuscuz</td>
+                <td class="text-end">73</td>
+                <td class="text-end">R$ 2.628,00</td>
+              </tr>
+              <tr>
+                <td>Combo Nordestino</td>
+                <td>Combos</td>
+                <td class="text-end">61</td>
+                <td class="text-end">R$ 4.270,00</td>
+              </tr>
+              <tr>
+                <td>Baião de Dois</td>
+                <td>Pratos Principais</td>
+                <td class="text-end">54</td>
+                <td class="text-end">R$ 3.240,00</td>
+              </tr>
+              <tr>
+                <td>Suco de Umbu</td>
+                <td>Bebidas</td>
+                <td class="text-end">49</td>
+                <td class="text-end">R$ 980,00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="card-header bg-body-tertiary">
+        <h5 class="mb-0 fw-semibold">Pedidos por Status</h5>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-striped mb-0 align-middle">
+            <thead class="table-light">
+              <tr>
+                <th scope="col">Status</th>
+                <th scope="col" class="text-end">Quantidade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge text-bg-success">Entregues</span></td>
+                <td class="text-end fw-semibold">142</td>
+              </tr>
+              <tr>
+                <td><span class="badge text-bg-warning">Em Preparo</span></td>
+                <td class="text-end fw-semibold">27</td>
+              </tr>
+              <tr>
+                <td><span class="badge text-bg-danger">Cancelados</span></td>
+                <td class="text-end fw-semibold">11</td>
+              </tr>
+              <tr>
+                <td><span class="badge text-bg-secondary">Aguardando Pagamento</span></td>
+                <td class="text-end fw-semibold">68</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card shadow-sm border-success">
+      <div class="card-header bg-success-subtle">
+        <h5 class="mb-0 fw-semibold">
+          <i class="bi bi-cash-stack me-2"></i>Resumo Financeiro
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="p-3 rounded border h-100">
+              <p class="text-muted mb-1">Receita Bruta</p>
+              <p class="fw-bold fs-5 mb-0">R$ 20.180,00</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="p-3 rounded border h-100">
+              <p class="text-muted mb-1">Descontos Concedidos</p>
+              <p class="fw-bold fs-5 mb-0 text-danger">R$ 1.760,00</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="p-3 rounded border h-100">
+              <p class="text-muted mb-1">Receita Líquida</p>
+              <p class="fw-bold fs-5 mb-0 text-success">R$ 18.420,00</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="p-3 rounded border h-100">
+              <p class="text-muted mb-1">Valor Médio por Pedido</p>
+              <p class="fw-bold fs-5 mb-0">R$ 74,27</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
