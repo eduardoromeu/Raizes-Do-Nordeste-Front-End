@@ -33,7 +33,7 @@
       "id": 0,
       "nome": "Matriz",
       "endereco": "Rua Do Bom Jesus, n. 12, Recife Antigo, Recife - PE",
-      "imagem": "./assets/debug/wireframe256x512.png",
+      "imagem": "./assets/imagens-unidades/img-matriz.jpg",
       "cardapio": [
         0,
         1,
@@ -60,7 +60,7 @@
       "id": 1,
       "nome": "Praia",
       "endereco": "Rua Orla, n. 589, Praia do Cocal, Recife - PE",
-      "imagem": "./assets/debug/wireframe256x512.png",
+      "imagem": "./assets/imagens-unidades/img-praia.jpg",
       "cardapio": [
         0,
         2
@@ -70,7 +70,7 @@
       "id": 2,
       "nome": "Salvador",
       "endereco": "Av. Jequitaia, n. 76, Comércio, Salvador - BA",
-      "imagem": "./assets/debug/wireframe256x512.png",
+      "imagem": "./assets/imagens-unidades/img-salvador.jpg",
       "cardapio": [
         1,
         5
@@ -80,7 +80,7 @@
       "id": 3,
       "nome": "Palmital",
       "endereco": "R. Maximiliano Vicentim, n. 100, Palmital - PR",
-      "imagem": "./assets/debug/wireframe256x512.png",
+      "imagem": "./assets/imagens-unidades/img-palmital.jpg",
       "cardapio": [
         1,
         5
@@ -90,7 +90,7 @@
       "id": 4,
       "nome": "Juiz de Fora",
       "endereco": "Independência Shopping, Cascatinha, Juiz de Fora - MG",
-      "imagem": "./assets/debug/wireframe256x512.png",
+      "imagem": "./assets/imagens-unidades/img-jf.jpg",
       "cardapio": [
         1,
         5
