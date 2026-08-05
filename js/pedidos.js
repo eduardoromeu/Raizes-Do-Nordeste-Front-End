@@ -168,7 +168,7 @@ function getStatusBadge(status) {
     case "Recebido":
       return "text-bg-warning";
     case "Em Preparo":
-      return "text-bg-info";
+      return "text-bg-primary";
     case "Aguardando Retirada":
       return "text-bg-warning";
     case "A Caminho":
