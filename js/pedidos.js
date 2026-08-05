@@ -26,6 +26,7 @@ async function carregarPaginaPedido() {
   const txtStatusPedido = document.querySelector("#pedido-status");
   const sliderProgresso = document.querySelector("#pedido-progress");
   const dataPedidoRealizado = document.querySelector("#data-pedido-realizado");
+  const btnCancelarPedido = document.querySelector("#btn-cancelar-pedido");
 
   if (txtIdPedido)
     txtIdPedido.textContent = "#" + id_pedido.toString().padStart(4, '0');
@@ -66,6 +67,10 @@ async function carregarPaginaPedido() {
       bgColor = "text-bg-secondary";
       widthProgresso = 100;
       break;
+    case "Cancelado":
+      bgColor = "text-bg-danger";
+      widthProgresso = 0;
+      break;
   }
 
   if (dataPedidoRealizado)
@@ -73,7 +78,8 @@ async function carregarPaginaPedido() {
 
   if (sliderProgresso) {
     sliderProgresso.style.width = `${widthProgresso}%`
-    if (pedido.status == "Finalizado")
+    sliderProgresso.classList.toggle("bg-danger", pedido.status === "Cancelado");
+    if (pedido.status == "Finalizado" || pedido.status == "Cancelado")
       sliderProgresso.classList.remove("progress-bar-animated")
   }
 
@@ -85,6 +91,10 @@ async function carregarPaginaPedido() {
     txtStatusPedido.classList.remove("text-bg-info");
     txtStatusPedido.classList.remove("text-bg-secondary");
     txtStatusPedido.classList.add(bgColor);
+  }
+
+  if (btnCancelarPedido) {
+    btnCancelarPedido.disabled = pedido.status === "Finalizado" || pedido.status === "Cancelado";
   }
 
   const contItensPedido = document.querySelector("#pedido-itens");
@@ -130,7 +140,7 @@ async function carregarPaginaPedido() {
 
 async function atualizarStatusPedido(pedido) {
   if (!pedido || !pedido.timestamp) return;
-  if (pedido.status === "Aguardando Pagamento" || pedido.status === "Finalizado") return;
+  if (pedido.status === "Aguardando Pagamento" || pedido.status === "Finalizado" || pedido.status === "Cancelado") return;
 
   const minutosDecorridos = Math.floor((Date.now() - Number(pedido.timestamp)) / 60000);
   let novoStatus = pedido.status;
@@ -165,6 +175,8 @@ function getStatusBadge(status) {
       return "text-bg-success";
     case "Finalizado":
       return "text-bg-secondary";
+    case "Cancelado":
+      return "text-bg-danger";
     default:
       return "text-bg-warning";
   }
@@ -226,7 +238,7 @@ async function carregarHistoricoPedidos() {
         .map((item) => produtos.find((p) => Number(p.id) === Number(item.produtoId))?.titulo || "")
         .join(", ");
 
-      const emAndamento = pedido.status !== "Finalizado";
+      const emAndamento = pedido.status !== "Finalizado" && pedido.status !== "Cancelado";
       const badgeClass = getStatusBadge(pedido.status);
 
       const pedidoEl = document.createElement("div");
@@ -280,4 +292,15 @@ async function carregarHistoricoPedidos() {
   if (buscaPedido) {
     buscaPedido.addEventListener("input", () => renderPedidos(buscaPedido.value));
   }
+}
+
+function CancelarPedido() {
+  const id_pedido = getRouteParams().get("id_pedido");
+  if (!id_pedido) return;
+
+  const pedido = getOrderFromId(id_pedido);
+  if (!pedido) return;
+
+  setOrderStatus(id_pedido, "Cancelado");
+  carregarPaginaPedido();
 }
