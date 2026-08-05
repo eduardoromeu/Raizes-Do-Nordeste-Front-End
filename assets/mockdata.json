@@ -33,7 +33,7 @@
       "id": 0,
       "nome": "Matriz",
       "endereco": "Rua Tal, n. 12, Centro",
-      "imagem": "https://free-images.com/md/9b0e/restaurant_gastronomy_koblenz_human.jpg",
+      "imagem": "./assets/debug/wireframe256x512.png",
       "cardapio": [
         0,
         1,
@@ -60,7 +60,7 @@
       "id": 1,
       "nome": "Praia",
       "endereco": "Rua Orla, n. 589, Praia do Cocal",
-      "imagem": "https://free-images.com/md/9865/ponferrada_calle_gil_y_0.jpg",
+      "imagem": "./assets/debug/wireframe256x512.png",
       "cardapio": [
         0,
         2
@@ -70,7 +70,7 @@
       "id": 2,
       "nome": "Bairro",
       "endereco": "R. Viela, n. 76",
-      "imagem": "https://free-images.com/md/4dc8/restaurant_seats_table_chairs.jpg",
+      "imagem": "./assets/debug/wireframe256x512.png",
       "cardapio": [
         1,
         5
@@ -82,7 +82,7 @@
       "id": 0,
       "titulo": "Tapioca Carne de Sol",
       "descricao": "Tapioca Com Carne de Sol",
-      "imagem": "./assets/imagens-produtos/tapioca-carne.jpg",
+      "imagem": "./assets/debug/wireframe256x512.png",
       "preco": 14.99,
       "categorias": [
         "Tapiocas",
@@ -94,7 +94,7 @@
       "id": 1,
       "titulo": "Tapioca Morangolate",
       "descricao": "Tapioca de Chocolate com pedaços de morango",
-      "imagem": "./assets/imagens-produtos/tapioca-morangolate.jpg",
+      "imagem": "./assets/debug/wireframe256x512.png",
       "preco": 12.00,
       "categorias": [
         "Tapiocas",
