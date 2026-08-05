@@ -32,7 +32,7 @@
     {
       "id": 0,
       "nome": "Matriz",
-      "endereco": "Rua Tal, n. 12, Centro",
+      "endereco": "Rua Do Bom Jesus, n. 12, Recife Antigo, Recife - PE",
       "imagem": "./assets/debug/wireframe256x512.png",
       "cardapio": [
         0,
@@ -59,7 +59,7 @@
     {
       "id": 1,
       "nome": "Praia",
-      "endereco": "Rua Orla, n. 589, Praia do Cocal",
+      "endereco": "Rua Orla, n. 589, Praia do Cocal, Recife - PE",
       "imagem": "./assets/debug/wireframe256x512.png",
       "cardapio": [
         0,
@@ -68,8 +68,28 @@
     },
     {
       "id": 2,
-      "nome": "Bairro",
-      "endereco": "R. Viela, n. 76",
+      "nome": "Salvador",
+      "endereco": "Av. Jequitaia, n. 76, Comércio, Salvador - BA",
+      "imagem": "./assets/debug/wireframe256x512.png",
+      "cardapio": [
+        1,
+        5
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Palmital",
+      "endereco": "R. Maximiliano Vicentim, n. 100, Palmital - PR",
+      "imagem": "./assets/debug/wireframe256x512.png",
+      "cardapio": [
+        1,
+        5
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Juiz de Fora",
+      "endereco": "Independência Shopping, Cascatinha, Juiz de Fora - MG",
       "imagem": "./assets/debug/wireframe256x512.png",
       "cardapio": [
         1,
@@ -82,7 +102,7 @@
       "id": 0,
       "titulo": "Tapioca Carne de Sol",
       "descricao": "Tapioca Com Carne de Sol",
-      "imagem": "./assets/debug/wireframe256x512.png",
+      "imagem": "./assets/imagens-produtos/tapioca-carne.jpg",
       "preco": 14.99,
       "categorias": [
         "Tapiocas",
@@ -94,7 +114,7 @@
       "id": 1,
       "titulo": "Tapioca Morangolate",
       "descricao": "Tapioca de Chocolate com pedaços de morango",
-      "imagem": "./assets/debug/wireframe256x512.png",
+      "imagem": "./assets/imagens-produtos/tapioca-morangolate.jpg",
       "preco": 12.00,
       "categorias": [
         "Tapiocas",
