@@ -106,6 +106,11 @@ async function saveProfileEdit(event) {
     return false;
   }
 
+  if (!isAtLeast14YearsOld(birthdateValue)) {
+    showEditProfileMessage("O cliente deve ter ao menos 14 anos para se cadastrar.");
+    return false;
+  }
+
   const updatedUser = {
     ...currentUser,
     nome: nameValue,
