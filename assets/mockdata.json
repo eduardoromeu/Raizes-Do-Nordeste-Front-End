@@ -32,8 +32,8 @@
     {
       "id": 0,
       "nome": "Matriz",
-      "endereco": "Rua Tal, n. 12, Centro",
-      "imagem": "https://free-images.com/md/9b0e/restaurant_gastronomy_koblenz_human.jpg",
+      "endereco": "Rua Do Bom Jesus, n. 12, Recife Antigo, Recife - PE",
+      "imagem": "./assets/debug/wireframe256x512.png",
       "cardapio": [
         0,
         1,
@@ -59,8 +59,8 @@
     {
       "id": 1,
       "nome": "Praia",
-      "endereco": "Rua Orla, n. 589, Praia do Cocal",
-      "imagem": "https://free-images.com/md/9865/ponferrada_calle_gil_y_0.jpg",
+      "endereco": "Rua Orla, n. 589, Praia do Cocal, Recife - PE",
+      "imagem": "./assets/debug/wireframe256x512.png",
       "cardapio": [
         0,
         2
@@ -68,9 +68,29 @@
     },
     {
       "id": 2,
-      "nome": "Bairro",
-      "endereco": "R. Viela, n. 76",
-      "imagem": "https://free-images.com/md/4dc8/restaurant_seats_table_chairs.jpg",
+      "nome": "Salvador",
+      "endereco": "Av. Jequitaia, n. 76, Comércio, Salvador - BA",
+      "imagem": "./assets/debug/wireframe256x512.png",
+      "cardapio": [
+        1,
+        5
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Palmital",
+      "endereco": "R. Maximiliano Vicentim, n. 100, Palmital - PR",
+      "imagem": "./assets/debug/wireframe256x512.png",
+      "cardapio": [
+        1,
+        5
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Juiz de Fora",
+      "endereco": "Independência Shopping, Cascatinha, Juiz de Fora - MG",
+      "imagem": "./assets/debug/wireframe256x512.png",
       "cardapio": [
         1,
         5
