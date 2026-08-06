@@ -38,6 +38,8 @@
         0,
         1,
         2,
+        3,
+        4,
         5,
         6,
         7,
@@ -62,8 +64,23 @@
       "endereco": "Rua Orla, n. 589, Praia do Cocal, Recife - PE",
       "imagem": "./assets/imagens-unidades/img-praia.jpg",
       "cardapio": [
-        0,
-        2
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
       ]
     },
     {
@@ -72,8 +89,21 @@
       "endereco": "Av. Jequitaia, n. 76, Comércio, Salvador - BA",
       "imagem": "./assets/imagens-unidades/img-salvador.jpg",
       "cardapio": [
-        1,
-        5
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        20
       ]
     },
     {
@@ -82,8 +112,18 @@
       "endereco": "R. Maximiliano Vicentim, n. 100, Palmital - PR",
       "imagem": "./assets/imagens-unidades/img-palmital.jpg",
       "cardapio": [
-        1,
-        5
+        0,
+        2,
+        4,
+        6,
+        8,
+        11,
+        12,
+        15,
+        16,
+        18,
+        19,
+        20
       ]
     },
     {
@@ -92,8 +132,19 @@
       "endereco": "Independência Shopping, Cascatinha, Juiz de Fora - MG",
       "imagem": "./assets/imagens-unidades/img-jf.jpg",
       "cardapio": [
+        0,
         1,
-        5
+        2,
+        3,
+        4,
+        5,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
       ]
     }
   ],
@@ -127,7 +178,7 @@
       "id": 2,
       "titulo": "Tapioca Frango com Catupiry",
       "descricao": "Tapioca recheada com frango desfiado e catupiry",
-      "imagem": "",
+      "imagem": "./assets/imagens-produtos/tapioca-frango-cat.jpeg",
       "preco": 13.99,
       "categorias": [
         "Tapiocas",
@@ -139,7 +190,7 @@
       "id": 3,
       "titulo": "Tapioca Queijo Coalho",
       "descricao": "Tapioca recheada com queijo coalho grelhado",
-      "imagem": "",
+      "imagem": "./assets/imagens-produtos/tapioca-queijo-coalho.jpeg",
       "preco": 11.99,
       "categorias": [
         "Tapiocas",
@@ -151,7 +202,7 @@
       "id": 4,
       "titulo": "Cuscuz Nordestino Completo",
       "descricao": "Cuscuz com ovos, queijo coalho e carne de sol",
-      "imagem": "",
+      "imagem": "./assets/imagens-produtos/cuscuz-completo.jpg",
       "preco": 18.99,
       "categorias": [
         "Cuscuz",
@@ -163,7 +214,7 @@
       "id": 5,
       "titulo": "Cuscuz com Frango",
       "descricao": "Cuscuz tradicional acompanhado de frango desfiado",
-      "imagem": "",
+      "imagem": "./assets/imagens-produtos/farofa-de-cuscuz.jpg",
       "preco": 16.99,
       "categorias": [
         "Cuscuz",
@@ -175,7 +226,7 @@
       "id": 6,
       "titulo": "Escondidinho de Carne de Sol",
       "descricao": "Purê de mandioca gratinado com recheio de carne de sol",
-      "imagem": "",
+      "imagem": "./assets/imagens-produtos/escondidinho-carne-sol.jpg",
       "preco": 24.99,
       "categorias": [
         "Pratos",
@@ -186,7 +237,7 @@
       "id": 7,
       "titulo": "Escondidinho de Frango",
       "descricao": "Purê de mandioca gratinado com recheio de frango",
-      "imagem": "",
+      "imagem": "./assets/imagens-produtos/escondidinho-frango.jpg",
       "preco": 22.99,
       "categorias": [
         "Pratos",
@@ -197,7 +248,7 @@
       "id": 8,
       "titulo": "Baião de Dois",
       "descricao": "Arroz e feijão de corda com queijo coalho e carne seca",
-      "imagem": "",
+      "imagem": "./assets/imagens-produtos/baiao-de-dois.jpg",
       "preco": 26.99,
       "categorias": [
         "Pratos",
@@ -208,7 +259,7 @@
       "id": 9,
       "titulo": "Macaxeira Frita",
       "descricao": "Porção de macaxeira frita crocante",
-      "imagem": "",
+      "imagem": "./assets/imagens-produtos/macaxeira-frita.webp",
       "preco": 12.99,
       "categorias": [
         "Acompanhamentos",
@@ -219,7 +270,7 @@
       "id": 10,
       "titulo": "Queijo Coalho na Brasa",
       "descricao": "Espetinhos de queijo coalho grelhado",
-      "imagem": "",
+      "imagem": "./assets/imagens-produtos/queijo-coalho-brasa.webp",
       "preco": 9.99,
       "categorias": [
         "Acompanhamentos",
@@ -231,7 +282,7 @@
       "id": 11,
       "titulo": "Pastel de Carne de Sol",
       "descricao": "Pastel crocante recheado com carne de sol e queijo",
-      "imagem": "",
+      "imagem": "./assets/imagens-produtos/pastel-carne-sol.jpeg",
       "preco": 10.99,
       "categorias": [
         "Salgados",
@@ -242,7 +293,7 @@
       "id": 12,
       "titulo": "Pastel de Queijo Coalho",
       "descricao": "Pastel recheado com queijo coalho derretido",
-      "imagem": "",
+      "imagem": "./assets/imagens-produtos/pasteis-de-queijo-coalho.jpg",
       "preco": 9.99,
       "categorias": [
         "Salgados",
@@ -254,7 +305,7 @@
       "id": 13,
       "titulo": "Cartola",
       "descricao": "Banana frita com queijo, canela e açúcar",
-      "imagem": "",
+      "imagem": "./assets/imagens-produtos/cartola.webp",
       "preco": 11.99,
       "categorias": [
         "Sobremesas",
@@ -265,7 +316,7 @@
       "id": 14,
       "titulo": "Pudim de Tapioca",
       "descricao": "Sobremesa cremosa preparada com tapioca granulada",
-      "imagem": "",
+      "imagem": "./assets/imagens-produtos/pudim-tapioca.jpg",
       "preco": 9.99,
       "categorias": [
         "Sobremesas",
@@ -276,7 +327,7 @@
       "id": 15,
       "titulo": "Cocada Cremosa",
       "descricao": "Doce tradicional de coco servido gelado",
-      "imagem": "",
+      "imagem": "./assets/imagens-produtos/cocada-cremosa.jpg",
       "preco": 8.99,
       "categorias": [
         "Sobremesas",
@@ -287,7 +338,7 @@
       "id": 16,
       "titulo": "Suco de Cajá",
       "descricao": "Suco natural de cajá",
-      "imagem": "",
+      "imagem": "./assets/imagens-produtos/suco-de-caja.jpg",
       "preco": 7.99,
       "categorias": [
         "Bebidas",
@@ -298,7 +349,7 @@
       "id": 17,
       "titulo": "Suco de Umbu",
       "descricao": "Suco natural de umbu",
-      "imagem": "",
+      "imagem": "./assets/imagens-produtos/suco-umbu.jpeg",
       "preco": 7.99,
       "categorias": [
         "Bebidas",
@@ -309,7 +360,7 @@
       "id": 18,
       "titulo": "Suco de Graviola",
       "descricao": "Suco natural de graviola",
-      "imagem": "",
+      "imagem": "./assets/imagens-produtos/suco-graviola.jpg",
       "preco": 8.99,
       "categorias": [
         "Bebidas",
@@ -320,7 +371,7 @@
       "id": 19,
       "titulo": "Água de Coco",
       "descricao": "Água de coco gelada",
-      "imagem": "",
+      "imagem": "./assets/imagens-produtos/agua-de-coco.jpg",
       "preco": 6.99,
       "categorias": [
         "Bebidas"
@@ -329,8 +380,8 @@
     {
       "id": 20,
       "titulo": "Refrigerante Lata",
-      "descricao": "Refrigerante 350ml",
-      "imagem": "",
+      "descricao": "Refrigerante Lata 350ml",
+      "imagem": "./assets/imagens-produtos/refrigerante-lata.jpg",
       "preco": 5.99,
       "categorias": [
         "Bebidas"
