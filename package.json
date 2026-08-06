@@ -1,0 +1,22 @@
+{
+  "name": "raizes-do-nordeste-front-end",
+  "version": "1.0.0",
+  "description": "Projeto Multidisciplinar de desenvolvimento Front End",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduardoromeu/Raizes-Do-Nordeste-Front-End.git"
+  },
+  "author": "eduardoromeu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eduardoromeu/Raizes-Do-Nordeste-Front-End/issues"
+  },
+  "homepage": "https://github.com/eduardoromeu/Raizes-Do-Nordeste-Front-End#readme",
+  "devDependencies": {
+    "cypress": "^15.20.0"
+  }
+}
