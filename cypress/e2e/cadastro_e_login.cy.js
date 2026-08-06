@@ -1,6 +1,6 @@
-describe("Cadastro", () => {
+describe("Cadastro e Login", () => {
 
-  it("realiza cadastro de novo usuário com sucesso", () => {
+  it("realiza cadastro e login com o novo usuário", () => {
     const senhaAleatoria = `Cy@1efouc9`;
 
     cy.visit("/#/cadastro", {
@@ -26,5 +26,11 @@ describe("Cadastro", () => {
       .and("contain", "Cadastro efetuado com sucesso");
 
     cy.location("hash", { timeout: 6000 }).should("eq", "#/login");
+
+    cy.get("#username").type("cypjds@netmail.com");
+    cy.get("#password").type(senhaAleatoria);
+    cy.contains("button", "Logar").click();
+
+    cy.location("hash", { timeout: 6000 }).should("eq", "#/unidades");
   });
 });
