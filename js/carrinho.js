@@ -343,8 +343,23 @@ async function abrirModalPedido() {
 
   confirmBtn.onclick = () => {
     const modal = window.bootstrap?.Modal?.getOrCreateInstance(modalEl);
-    modal?.hide();
-    enviarPedido();
+    if (!modal) {
+      enviarPedido();
+      return;
+    }
+
+    let pedidoEnviado = false;
+    const concluirPedido = () => {
+      if (pedidoEnviado) return;
+      pedidoEnviado = true;
+      modal.dispose();
+      enviarPedido();
+    };
+
+    modalEl.addEventListener("hidden.bs.modal", concluirPedido, { once: true });
+
+    modal.hide();
+    setTimeout(concluirPedido, 700);
   }
 
   const modal = window.bootstrap?.Modal?.getOrCreateInstance(modalEl);
